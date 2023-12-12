@@ -72,67 +72,53 @@ const products = [
     },
     {
       id: 9,
-      name: "Orange Cat",
-      price: 20000,
-      image:
-        "https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=2815&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      description:
-        "Embrace the joy of having an Orange Cat as your loyal and loving companion",
+      name: "Fossil Smartwatch",
+      price: 3000,
+      image: "https://images.unsplash.com/photo-1613541409730-a106bc0b03ab?q=80&w=2834&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "Stay connected and stylish with the Fossil Smartwatch.",
     },
     {
       id: 10,
-      name: "Golden Retriever",
-      price: 25000,
-      image:
-        "https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=2762&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      description:
-        "Meet the Golden Harmony Retriever, where boundless joy meets a heart of gold. ",
+      name: "Nike Soccer Ball",
+      price: 500,
+      image: "https://images.unsplash.com/photo-1518604666860-9ed391f76460?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "Kick it like a pro with our high-quality Nike Soccer Ball.",
     },
     {
-      id: 10,
-      name: "Golden Retriever",
-      price: 25000,
-      image:
-        "https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=2762&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      description:
-        "Meet the Golden Harmony Retriever, where boundless joy meets a heart of gold. ",
+      id: 11,
+      name: "Levi's Denim Jacket",
+      price: 1500,
+      image: "https://images.unsplash.com/photo-1573662073208-1f58a071c756?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "Complete your look with the timeless Levi's Denim Jacket.",
     },
     {
-      id: 10,
-      name: "Golden Retriever",
-      price: 25000,
-      image:
-        "https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=2762&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      description:
-        "Meet the Golden Harmony Retriever, where boundless joy meets a heart of gold. ",
+      id: 12,
+      name: "Dell XPS Laptop",
+      price: 35000,
+      image: "https://images.unsplash.com/photo-1593642634402-b0eb5e2eebc9?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "Experience powerful computing with the sleek Dell XPS Laptop.",
     },
     {
-      id: 10,
-      name: "Golden Retriever",
-      price: 25000,
-      image:
-        "https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=2762&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      description:
-        "Meet the Golden Harmony Retriever, where boundless joy meets a heart of gold. ",
+      id: 13,
+      name: "Converse Chuck Taylor Sneakers",
+      price: 800,
+      image: "https://images.unsplash.com/photo-1527128296579-fce16948f060?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "Step out in style with the iconic Converse Chuck Taylor Sneakers.",
     },
     {
-      id: 10,
-      name: "Golden Retriever",
-      price: 25000,
-      image:
-        "https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=2762&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      description:
-        "Meet the Golden Harmony Retriever, where boundless joy meets a heart of gold. ",
+      id: 14,
+      name: "Casio G-Shock Watch",
+      price: 2200,
+      image: "https://images.unsplash.com/photo-1631289990702-4134435297f8?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "Stay on time and on trend with the durable Casio G-Shock Watch.",
     },
     {
-      id: 10,
-      name: "Golden Retriever",
-      price: 25000,
-      image:
-        "https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=2762&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      description:
-        "Meet the Golden Harmony Retriever, where boundless joy meets a heart of gold. ",
-    },
+      id: 15,
+      name: "Sony Noise-Canceling Earbuds",
+      price: 2000,
+      image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "Immerse yourself in crystal-clear audio with Sony Noise-Canceling Earbuds.",
+    }
   ];
   
   export default products;
