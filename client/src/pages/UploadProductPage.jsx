@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import UploadImage from '../components/UploadImage'
 import Input from '../components/Input'
 import Button from '../components/Button'
-import { useContext } from 'react'
-import { AppContext } from '../App'
+// import { useContext } from 'react'
+// import { AppContext } from '../App'
 
 
 const UploadProductPage = () => {
 
-  const {products,setProducts} = useContext(AppContext)
+  // const {products,setProducts} = useContext(AppContext)
+  const [products,setProducts] = useState({
+    name:'',
+    code:'',
+    price:0,
+    image:''
+  })
 
   return (
     <main className='font-poppins w-screen flex flex-col items-center gap-5'>
@@ -22,8 +28,8 @@ const UploadProductPage = () => {
         </form>
 
         <div className='flex gap-5 p-10'>
-          <Button textColor='#E13B30' bgColor='#FFFF' title='ยกเลิก'/>
-          <Button textColor='#FFFF' bgColor='#E04132' title='ยืนยัน'/>
+          <Button title='ยกเลิก'/>
+          <Button title='ยืนยัน'/>
         </div>   
       </section>
     </main>

@@ -13,8 +13,6 @@ export default function UploadImage() {
     const [totalSize, setTotalSize] = useState(0);
     const fileUploadRef = useRef(null);
     
-    console.log(fileUploadRef);
-    
     const onTemplateSelect = (e) => {
         let _totalSize = totalSize;
         let files = e.files;

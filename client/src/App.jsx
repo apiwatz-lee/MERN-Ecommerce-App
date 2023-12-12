@@ -10,30 +10,30 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';
 import Navigator from './components/Navigator'
 
-export const AppContext = createContext(null)
+// export const AppContext = createContext(null)
 
 function App() {
 
-  const [products,setProducts] = useState({
-    name:'',
-    code:'',
-    price:0,
-    image:''
-  })
+  // const [products,setProducts] = useState({
+  //   name:'',
+  //   code:'',
+  //   price:0,
+  //   image:''
+  // })
 
   return (
     <>
-      <AppContext.Provider value={{products,setProducts}}>
+      {/* <AppContext.Provider value={{products,setProducts}}> */}
         <PrimeReactProvider>
           <BrowserRouter>
             <Navigator/>
             <Routes>
-              <Route path='/' element={<ProductListPage/>}/>
+              <Route path='/products' element={<ProductListPage/>}/>
               <Route path='/upload' element={<UploadProductPage/>}/>
             </Routes>
           </BrowserRouter>
         </PrimeReactProvider>
-      </AppContext.Provider>
+      {/* </AppContext.Provider> */}
     </>
   )
 }

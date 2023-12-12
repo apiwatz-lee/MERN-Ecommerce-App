@@ -5,6 +5,7 @@ import { PiMagnifyingGlassThin } from "react-icons/pi";
 const ProductListPage = () => {
 
   const [keyword,setKeyword] = useState('')
+  
 
   return (
     <main className='font-poppins w-screen h-screen flex flex-col items-center gap-5'>

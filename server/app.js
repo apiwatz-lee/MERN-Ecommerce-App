@@ -1,8 +1,9 @@
-import express from "express"
+import express, { query } from "express"
 import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import { client } from "./utils/db.js";
+import { db } from "./utils/db.js";
 
 async function init(){
     
@@ -10,11 +11,20 @@ async function init(){
     const app = express();
     app.use(cors())
     app.use(bodyParser.json());
-    const port = 4002;
+    const port = 4000;
     await client.connect();
     
-    app.get("/products",(req,res)=>{
-        res.send('This is get products api')
+    app.get("/products", async(req,res)=>{
+     
+        try {
+            const collection = db.collection('products')
+            const query = {}
+            const products =  await collection.find(query).toArray()
+            return res.status(200).json(products)
+        } catch (error) {
+            return res.status(404).json({error:error})
+        }
+       
     })
     
     app.get("/",(req,res)=>{
