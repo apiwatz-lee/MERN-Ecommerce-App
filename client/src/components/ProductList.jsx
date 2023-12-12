@@ -12,7 +12,7 @@ const ProductList = () => {
 
             {products.map((item)=>{
                 return ( 
-                        <section className='border w-[230px] h-[350px] flex flex-col justify-between rounded-2xl shadow-xl' key={item.id}>
+                        <section className='border w-[230px] h-[350px] flex flex-col justify-between rounded-2xl shadow-xl' key={item.code}>
                             <div>
                               <img src={item.image} alt={item.name} className='h-[200px] rounded-t-2xl object-cover w-[300px]' />
                               <h1 className='pl-4 pt-4 font-semibold'>{item.name}<br/>

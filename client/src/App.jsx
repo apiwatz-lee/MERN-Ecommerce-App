@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,createContext } from 'react'
 import './App.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import ProductListPage from './pages/ProductListPage'
@@ -10,20 +10,30 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';
 import Navigator from './components/Navigator'
 
+export const AppContext = createContext(null)
+
 function App() {
 
+  const [products,setProducts] = useState({
+    name:'',
+    code:'',
+    price:0,
+    image:''
+  })
 
   return (
     <>
-     <PrimeReactProvider>
-        <BrowserRouter>
-        <Navigator/>
-          <Routes>
-            <Route path='/' element={<ProductListPage/>}/>
-            <Route path='/upload' element={<UploadProductPage/>}/>
-          </Routes>
-        </BrowserRouter>
-      </PrimeReactProvider>
+      <AppContext.Provider value={{products,setProducts}}>
+        <PrimeReactProvider>
+          <BrowserRouter>
+            <Navigator/>
+            <Routes>
+              <Route path='/' element={<ProductListPage/>}/>
+              <Route path='/upload' element={<UploadProductPage/>}/>
+            </Routes>
+          </BrowserRouter>
+        </PrimeReactProvider>
+      </AppContext.Provider>
     </>
   )
 }

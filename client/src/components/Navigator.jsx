@@ -12,7 +12,7 @@ export default function Navigator() {
     ]
 
     const link = path.map((item)=>{
-        return <Link to={item.path} key={item.id} className='hover:text-gray-500 duration-500'>{item.name}</Link>
+        return <Link to={item.path} key={item.id} className='text-gray-500 hover:text-gray-800 duration-500'>{item.name}</Link>
     })
 
     return (
