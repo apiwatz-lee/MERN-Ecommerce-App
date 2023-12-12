@@ -13,6 +13,8 @@ export default function UploadImage() {
     const [totalSize, setTotalSize] = useState(0);
     const fileUploadRef = useRef(null);
     
+    console.log(fileUploadRef);
+    
     const onTemplateSelect = (e) => {
         let _totalSize = totalSize;
         let files = e.files;
@@ -26,7 +28,7 @@ export default function UploadImage() {
 
     const onTemplateUpload = (e) => {
         let _totalSize = 0;
-
+        
         e.files.forEach((file) => {
             _totalSize += file.size || 0;
         });
@@ -96,7 +98,7 @@ export default function UploadImage() {
     return (
         <>
             <p className='w-full p-2 text-lg font-light'>Upload Image</p>
-            <div className='w-full border-2 border-dashed rounded-2xl'>
+            <div className='w-full border-2 border-dashed rounded-2xl flex justify-center items-center'>
                 <Toast ref={toast}></Toast>
 
                 <Tooltip target=".custom-choose-btn" content="Choose" position="bottom" />
