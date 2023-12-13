@@ -5,13 +5,21 @@ import axios from 'axios'
 import {useNavigate} from "react-router-dom"
 import { useDropzone} from 'react-dropzone';
 import { v4 as uuidv4 } from 'uuid';
+import ProductConfirmation from '../components/ProductConfirmation'
+import { useDisclosure } from "@chakra-ui/react";
+import Loading from '../components/Loading'
 
 const UploadProductPage = () => {
 
   const [name,setName] = useState('')
   const [code,setCode] = useState('')
-  const [price,setPrice] = useState()
+  const [price,setPrice] = useState(0)
   const [avatars,setAvatars] = useState([])
+  const [isLoading,setIsLoading] = useState(false)
+  const [isSubmit,setIsSubmit] = useState(false)
+  const [isCompleted,setIsCompleted] = useState(false)
+
+  const {onClose} = useDisclosure();
 
   const navigate = useNavigate();
 
@@ -24,7 +32,9 @@ const UploadProductPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    setIsSubmit(false)
+    setIsLoading(true)
+    setIsCompleted(false)
     const formData = new FormData();
     formData.append('name',name);
     formData.append('code',code);
@@ -34,10 +44,17 @@ const UploadProductPage = () => {
   }
 
   const handleUpload = async(formData) => {
-    await axios.post('http://localhost:4000/upload',formData,{
+      await axios.post('http://localhost:4000/upload',formData,{
       headers: {'Content-Type': 'multipart/form-data'},
     })
-    navigate('/products');
+      setIsLoading(false)
+      setIsCompleted(true)
+      navigate('/products');
+  }
+
+  const handleCancel = () => {
+    onClose();
+    setIsSubmit(false)
   }
       
   const onDrop = useCallback(acceptedFiles => {
@@ -66,11 +83,11 @@ const UploadProductPage = () => {
     ) 
    });
 
-  
-
   return (
     <main className='font-poppins w-screen flex flex-col items-center gap-5'>
+
       <h1 className='text-3xl font-medium w-[90vw] pt-5 text-center sm:text-left'>Upload Product</h1>     
+
       <section className='flex flex-col justify-center items-center w-[75%]'>
 
         <form onSubmit={handleSubmit} className='flex flex-col gap-5 w-full py-5'>
@@ -107,12 +124,12 @@ const UploadProductPage = () => {
             })}
           </div>
 
-            {fileRejectionItems.length > 0 && (
-              <div className='text-red-500'>
-                <h4>Rejected Files:</h4>
-                <ul>{fileRejectionItems}</ul>
-              </div>
-            )}
+          {fileRejectionItems.length > 0 && (
+            <div className='text-red-500'>
+              <h4>Rejected Files</h4>
+              <ul>{fileRejectionItems}</ul>
+            </div>
+          )}
           
     
           <h3 className='text-center sm:text-right text-gray-400 text-sm font-light'>Image Upload ({avatars.length}/6)</h3>
@@ -122,15 +139,32 @@ const UploadProductPage = () => {
           <Input title='Price' type='number' placeholder='1,000' value={price} onChange={(e)=>{setPrice(e.target.value)}}/>
      
           <div className='flex justify-center gap-5 py-5 sm:p-10'>
-            <Button type='reset' title='ยกเลิก' onClick={()=>navigate('/products')}/>
-            <Button type='submit' title='ยืนยัน' onClick={handleSubmit}/>
+            <Button 
+              className='border p-3 rounded-full w-28 sm:w-56 bg-white text-[#E04132] hover:bg-gray-200 hover:text-black duration-300' 
+              type='reset' 
+              title='ยกเลิก' 
+              onClick={()=>navigate('/products')}/>
+            <Button 
+              className='border p-3 rounded-full w-28 sm:w-56 text-white bg-[#E04132] hover:bg-orange-700 duration-300' 
+              type='button' 
+              title='ยืนยัน' 
+              onClick={()=>setIsSubmit(true)}/>
           </div>   
-
-          
 
         </form>
 
+        <ProductConfirmation
+        handleSubmit={handleSubmit}
+        isSubmit={isSubmit}
+        handleCancel={handleCancel}
+        />
+
+        <Loading
+          isLoading={isLoading}
+        />
+
       </section>
+
     </main>
   )
 }

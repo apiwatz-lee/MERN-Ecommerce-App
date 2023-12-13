@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Button = ({type,title,onClick}) => {
+const Button = ({className,type,title,onClick}) => {
   
   return    <button 
                   type={type} 
-                  className={`border p-3 rounded-full w-28 sm:w-56 ${title === 'ยืนยัน' ? `text-white bg-[#E04132]`:`bg-white text-[#E04132]`}`}
+                  className={className}
                   onClick={onClick}
                   >
                 {title}
