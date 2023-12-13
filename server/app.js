@@ -1,18 +1,31 @@
-import express, { query } from "express"
+import express from "express"
 import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import { client } from "./utils/db.js";
 import { db } from "./utils/db.js";
+import multer from "multer";
+import cloudinary from "cloudinary";
+import { cloudinaryUpload } from "./utils/upload.js";
+
 
 async function init(){
     
     dotenv.config();
+    cloudinary.config({
+        cloud_name: process.env.CLOUD_NAME,
+        api_key: process.env.API_KEY,
+        api_secret: process.env.API_SECRET,
+        secure: true,
+      });
     const app = express();
     app.use(cors())
     app.use(bodyParser.json());
     const port = 4000;
     await client.connect();
+
+    const multerUpload = multer({dest: 'public\\files'});
+    const avatarUpload = multerUpload.fields([{ name: 'avatar', maxCount: 6}])
     
     app.get("/products", async(req,res)=>{
      
@@ -25,6 +38,30 @@ async function init(){
             return res.status(404).json({error:error})
         }
        
+    })
+
+    app.post('/upload', avatarUpload, async(req,res)=>{
+
+        console.log(req.body);
+        try {
+            const products = {
+                name:req.body.name,
+                code:req.body.code,
+                price:req.body.price,
+            }
+            
+            const avatarUrl = await cloudinaryUpload(req.files);
+            products['avatars'] = avatarUrl;
+
+            const collection = db.collection('products')
+            await collection.insertOne(products)
+
+            return res.json({
+                message:'Product has been created successfully'
+            })
+        } catch (error) {
+            console.log(error)
+        }
     })
     
     app.get("/",(req,res)=>{

@@ -1,4 +1,4 @@
-import { useState,createContext } from 'react'
+import { useState } from 'react'
 import './App.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import ProductListPage from './pages/ProductListPage'
@@ -10,20 +10,13 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';
 import Navigator from './components/Navigator'
 
-// export const AppContext = createContext(null)
+
 
 function App() {
 
-  // const [products,setProducts] = useState({
-  //   name:'',
-  //   code:'',
-  //   price:0,
-  //   image:''
-  // })
 
   return (
     <>
-      {/* <AppContext.Provider value={{products,setProducts}}> */}
         <PrimeReactProvider>
           <BrowserRouter>
             <Navigator/>
@@ -33,7 +26,6 @@ function App() {
             </Routes>
           </BrowserRouter>
         </PrimeReactProvider>
-      {/* </AppContext.Provider> */}
     </>
   )
 }
