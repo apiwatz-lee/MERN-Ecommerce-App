@@ -20,7 +20,7 @@ const ProductListPage = () => {
             />
             <PiMagnifyingGlassThin className='absolute top-[18px] left-[30px] text-xl text-gray-400'/>
         </span>
-        <ProductList/>
+        <ProductList keyword={keyword}/>
     </main>
   )
 }

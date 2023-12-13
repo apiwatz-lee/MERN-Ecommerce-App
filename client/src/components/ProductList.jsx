@@ -2,14 +2,14 @@ import React from 'react'
 import axios from "axios"
 import { useEffect,useState } from 'react';
 
-const ProductList = () => {
+const ProductList = ({keyword}) => {
 
   const [products,setProducts] = useState([])
   
   const fetchProducts = async() => {
 
     try {
-      const result = await axios.get("http://localhost:4000/products")
+      const result = await axios.get(`http://localhost:4000/products?keyword=${keyword}`)
       setProducts(result.data)
     } catch (error) {
       console.log(error);
@@ -19,7 +19,7 @@ const ProductList = () => {
 
   useEffect(()=>{
     fetchProducts()
-  },[])
+  },[keyword])
   
   const formatNumber = (num) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
