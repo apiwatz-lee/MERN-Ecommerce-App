@@ -10,6 +10,7 @@ const ProductList = ({keyword}) => {
 
     try {
       const result = await axios.get(`http://localhost:4000/products?keyword=${keyword}`)
+      console.log('fetch data')
       setProducts(result.data)
     } catch (error) {
       console.log(error);

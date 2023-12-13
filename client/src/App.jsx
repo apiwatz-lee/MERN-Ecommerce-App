@@ -5,8 +5,6 @@ import ProductListPage from './pages/ProductListPage'
 import UploadProductPage from './pages/UploadProductPage'
 import Navigator from './components/Navigator'
 
-
-
 function App() {
 
 
