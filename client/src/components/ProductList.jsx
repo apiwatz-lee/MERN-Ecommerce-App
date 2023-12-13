@@ -18,7 +18,12 @@ const ProductList = ({keyword}) => {
   }
 
   useEffect(()=>{
-    fetchProducts()
+    const delayDebounceFn = setTimeout(()=>{
+      fetchProducts()
+    },500)
+
+    return () => clearTimeout(delayDebounceFn)
+
   },[keyword])
   
   const formatNumber = (num) => {
