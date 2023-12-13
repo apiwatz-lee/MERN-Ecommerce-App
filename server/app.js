@@ -42,7 +42,6 @@ async function init(){
 
     app.post('/upload', avatarUpload, async(req,res)=>{
 
-        console.log(req.body);
         try {
             const products = {
                 name:req.body.name,

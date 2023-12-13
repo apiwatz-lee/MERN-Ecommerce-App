@@ -96,6 +96,17 @@ const products = [
       price: 2000,
       code:'X-015',
       image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      name: "Toon",
+      code: "X-999",
+      price: "999",
+      avatars: [
+          {
+              "url": "https://res.cloudinary.com/dpsrbpkav/image/upload/v1702453601/xsurface/bhmq7se31trkldqimuuo.jpg",
+              "publicId": "xsurface/bhmq7se31trkldqimuuo"
+          }
+      ]
     }
   ];
   

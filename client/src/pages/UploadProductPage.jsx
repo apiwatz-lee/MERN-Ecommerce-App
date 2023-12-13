@@ -30,9 +30,9 @@ const UploadProductPage = () => {
 
     const formData = new FormData();
 
-    formData.append('name',setName);
-    formData.append('code',setCode);
-    formData.append('price',setPrice);
+    formData.append('name',name);
+    formData.append('code',code);
+    formData.append('price',price);
     
     for(let key in avatars){
       formData.append('avatar',avatars[key])
