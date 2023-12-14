@@ -63,6 +63,7 @@ async function init(){
                 name:req.body.name,
                 code:req.body.code,
                 price:Number(req.body.price),
+                description:req.body.description
             }
             
             const avatarUrl = await cloudinaryUpload(req.files);

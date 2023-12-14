@@ -15,6 +15,8 @@ const Form = () => {
           setCode,
           price,
           setPrice,
+          description,
+          setDescription,
           avatars,
           setIsSubmit} = useContext(AppContext)
           
@@ -67,6 +69,15 @@ const Form = () => {
             isClosable: true,
             position:'top'
           })
+        }else if(description === ''){
+          toast({
+            title: 'Product Description.',
+            description: "Price description is required",
+            status: 'error',
+            duration: 2000,
+            isClosable: true,
+            position:'top'
+        })
         }else{
           setIsSubmit(true)
         }
@@ -100,18 +111,30 @@ const Form = () => {
                 value={price} 
                 onChange={(e)=>{setPrice(e.target.value)}}/>
 
-              <div className='flex justify-center gap-5 py-5 sm:p-10'>
-                  <Button 
-                  className='border p-3 rounded-full w-28 sm:w-56 bg-white text-[#E04132] hover:bg-gray-200 hover:text-black duration-300' 
-                  type='reset' 
-                  title='ยกเลิก' 
-                  onClick={()=>navigate('/products')}/>
-                  <Button 
-                  className='border p-3 rounded-full w-28 sm:w-56 text-white bg-[#E04132] hover:bg-orange-700 duration-300' 
-                  type='button' 
-                  title='ยืนยัน' 
-                  onClick={handleValidate}/>
-              </div>   
+            <label htmlFor="description">Description</label>
+            <textarea 
+              className='outline-none border resize-none rounded-lg p-3 pl-7 text-gray-500 font-light placeholder:font-light placeholder:text-gray-300 '
+              placeholder='Product description'
+              name="description" 
+              id="description" 
+              cols="30" 
+              rows="10"
+              value={description}
+              onChange={(e)=>setDescription(e.target.value)}
+              />
+             
+            <div className='flex justify-center gap-5 py-5 sm:p-10'>
+                <Button 
+                className='border p-3 rounded-full w-28 sm:w-56 bg-white text-[#E04132] hover:bg-gray-200 hover:text-black duration-300' 
+                type='reset' 
+                title='ยกเลิก' 
+                onClick={()=>navigate('/product')}/>
+                <Button 
+                className='border p-3 rounded-full w-28 sm:w-56 text-white bg-[#E04132] hover:bg-orange-700 duration-300' 
+                type='button' 
+                title='ยืนยัน' 
+                onClick={handleValidate}/>
+            </div>   
 
           </form>
         </>

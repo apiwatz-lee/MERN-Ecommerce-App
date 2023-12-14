@@ -11,6 +11,7 @@ const UploadProductPage = () => {
   const {name,
         code,
         price,
+        description,
         avatars,
         setIsLoading,
         setIsSubmit,
@@ -27,6 +28,7 @@ const UploadProductPage = () => {
     formData.append('name',name);
     formData.append('code',code);
     formData.append('price',price);
+    formData.append('description',description);
     avatars.forEach((file)=>formData.append('avatar',file))
     handleUpload(formData)
   }

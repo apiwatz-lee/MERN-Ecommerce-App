@@ -14,6 +14,7 @@ function App() {
   const [name,setName] = useState('')
   const [code,setCode] = useState('')
   const [price,setPrice] = useState('')
+  const [description,setDescription] = useState('')
   const [avatars,setAvatars] = useState([])
   const [isLoading,setIsLoading] = useState(false)
   const [isSubmit,setIsSubmit] = useState(false)
@@ -30,6 +31,8 @@ function App() {
         setCode,
         price,
         setPrice,
+        description,
+        setDescription,
         avatars,
         setAvatars,
         isLoading,

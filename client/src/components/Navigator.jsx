@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link, useLocation} from 'react-router-dom'
+import { FiShoppingCart } from "react-icons/fi";
 
 export default function Navigator() {
 
@@ -26,7 +27,7 @@ export default function Navigator() {
             </ul>
 
             <ul className='flex justify-center items-center gap-5 p-3 text-gray-900 w-[200px]'>
-                cart
+                <FiShoppingCart className='text-2xl'/>
             </ul>
         </nav>
     )

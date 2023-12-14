@@ -13,6 +13,7 @@ const ProductListPage = () => {
         setName,
         setCode,
         setPrice,
+        setDescription,
         setAvatars} = useContext(AppContext)
 
   const toast = useToast()
@@ -33,7 +34,8 @@ const ProductListPage = () => {
       setIsCompleted(false)
       setName('')
       setCode('')
-      setPrice()
+      setPrice('')
+      setDescription('')
       setAvatars([])
       
   },[])
