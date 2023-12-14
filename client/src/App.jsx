@@ -18,6 +18,7 @@ function App() {
   const [isSubmit,setIsSubmit] = useState(false)
   const [isCompleted,setIsCompleted] = useState(false)
   const [keyword,setKeyword] = useState('')
+  const [errorMessage,setErrorMessage] = useState(null)
 
   return (
     <>
@@ -37,8 +38,9 @@ function App() {
         isCompleted,
         setIsCompleted,
         keyword,
-        setKeyword
-
+        setKeyword,
+        errorMessage,
+        setErrorMessage
       }}>
         <ChakraProvider>
           <BrowserRouter>
