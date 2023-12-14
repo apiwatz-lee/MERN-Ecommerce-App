@@ -2,11 +2,14 @@ import React,{useContext,useCallback} from 'react'
 import { useDropzone} from 'react-dropzone';
 import { AppContext } from '../App';
 import { v4 as uuidv4 } from 'uuid';
-import UploadIcon from './UploadIcon';
+import UploadIcon from './UploadIcon'
+import { useToast } from '@chakra-ui/react';
+import { useEffect } from 'react';
 
 const Dropzone = () => {
-
+    
     const {avatars,setAvatars} = useContext(AppContext)
+    const toast = useToast()
 
     const onDrop = useCallback(acceptedFiles => {
         if(acceptedFiles.length){
@@ -42,29 +45,45 @@ const Dropzone = () => {
         setAvatars(updateAvatars)
       }
 
+      useEffect(()=>{
+        if(fileRejections.length > 0){
+            toast({
+              title: 'Image Type.',
+              description: "Product images only accept JPG or PNG formats",
+              status: 'error',
+              duration: 3000,
+              isClosable: true,
+              position:'top'
+            })
+        }
+      },[fileRejections])
+
+      console.log(fileRejections);
+
   return (
     <>
+      
         {avatars.length < 6 &&
-                            <div {...getRootProps()} 
-                                className={`border-2 border-dashed flex flex-col justify-center items-center min-h-[40vh] rounded-2xl 
-                                ${isDragActive && !isDragReject ? 'border-green-500':isDragReject ? 'border-red-500':null}`}>
-                            
-                                <input {...getInputProps()}/>
-                                {isDragActive && 
-                                                !isDragReject && <p className='font-bold text-3xl text-green-800'>"Drop it like it's hot!" 🥳</p>}
+                <div {...getRootProps()} 
+                    className={`border-2 border-dashed flex flex-col justify-center items-center min-h-[40vh] rounded-2xl 
+                    ${isDragActive && !isDragReject ? 'border-green-500':isDragReject ? 'border-red-500':null}`}>
+                
+                    <input {...getInputProps()}/>
+                    {isDragActive && 
+                                    !isDragReject && <p className='font-bold text-3xl text-green-800'>"Drop it like it's hot!" 🥳</p>}
 
-                                {!isDragActive && 
-                                                <label htmlFor='upload' className='flex flex-col justify-center items-center gap-4'>
-                                                    <UploadIcon/>
-                                                    <p className='font-light text-gray-500 text-center'>Drag & Drop or <span className='text-blue-500 underline cursor-pointer'>Choose file</span> to upload</p>
-                                                    <p className='font-extralight text-sm text-gray-400 text-center'>JPG. or PNG Maximum file size 50MB</p>
-                                                </label>}   
+                    {!isDragActive && 
+                                    <label htmlFor='upload' className='flex flex-col justify-center items-center gap-4'>
+                                        <UploadIcon/>
+                                        <p className='font-light text-gray-500 text-center'>Drag & Drop or <span className='text-blue-500 underline cursor-pointer'>Choose file</span> to upload</p>
+                                        <p className='font-extralight text-sm text-gray-400 text-center'>JPG. or PNG Maximum file size 50MB</p>
+                                    </label>}   
 
-                                {isDragReject && 
-                                                <p className='font-bold text-3xl text-red-800 text-center'> 😯 Sorry, uploaded files must be in JPG or PNG format.</p>}
-                            </div>
+                    {isDragReject && 
+                                    <p className='font-bold text-3xl text-red-800 text-center'> 😯 Sorry, uploaded files must be in JPG or PNG format.</p>}
+                </div>
         }
-         
+
         <section className='flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-10'>
             {avatars.map((file)=>{
                 return (
@@ -74,13 +93,13 @@ const Dropzone = () => {
                 </div>)
             })}
         </section>
-
+    
         {fileRejectionItems.length > 0 && (
             <div className='text-red-500'>
             <h4>Rejected Files</h4>
             <ul>{fileRejectionItems}</ul>
             </div>
-        )}
+        )}    
     </>
   )
 }

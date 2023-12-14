@@ -18,8 +18,6 @@ export default function Navigator() {
                             ${location.pathname === item.path ? 'text-gray-950 underline-offset-8 bg-gray-100 p-2 rounded-xl':null}`}>{item.name}</Link>
     })
 
-
-
     return (
         <nav className='mt-2'>
             <ul className='flex justify-center items-center gap-5 p-3 group text-gray-900'>

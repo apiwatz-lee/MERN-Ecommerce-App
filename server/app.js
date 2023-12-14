@@ -62,7 +62,7 @@ async function init(){
             const products = {
                 name:req.body.name,
                 code:req.body.code,
-                price:req.body.price,
+                price:Number(req.body.price),
             }
             
             const avatarUrl = await cloudinaryUpload(req.files);
@@ -75,7 +75,7 @@ async function init(){
                 message:'Product has been created successfully'
             })
         } catch (error) {
-            console.log(error)
+            return res.status(404).json({data:error})
         }
     })
     

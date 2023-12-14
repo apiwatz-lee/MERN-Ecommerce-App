@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect } from 'react'
+import { useEffect,useContext } from 'react'
 import { useDisclosure } from "@chakra-ui/react";
 import {
     AlertDialog,
@@ -9,11 +9,12 @@ import {
     AlertDialogContent,
     AlertDialogOverlay,
   } from "@chakra-ui/react";
+  import { AppContext } from '../App';
 
-
-const ProductConfirmation = ({handleSubmit,isSubmit,handleCancel}) => {
+const ProductConfirmation = ({handleSubmit}) => {
     
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const {isSubmit,setIsSubmit} = useContext(AppContext)
     const cancelRef = React.useRef()
 
     useEffect(()=>{
@@ -32,6 +33,11 @@ const ProductConfirmation = ({handleSubmit,isSubmit,handleCancel}) => {
         cancel:'Cancel',
         corect:'Confirm!'
     }
+
+    const handleCancel = () => {
+        onClose();
+        setIsSubmit(false)
+      }
 
     return (
         <>
@@ -52,7 +58,7 @@ const ProductConfirmation = ({handleSubmit,isSubmit,handleCancel}) => {
                         </AlertDialogBody>
 
                         <AlertDialogFooter className={`flex gap-5`}>
-                            <button className='p-2 rounded-xl bg-gray-200 text-black' ref={cancelRef} onClick={handleCancel}>
+                            <button className='p-2 rounded-xl bg-gray-200 text-black outline-none' ref={cancelRef} onClick={handleCancel}>
                                 {message.cancel}
                             </button>
                             <button className='p-2 rounded-xl bg-orange-700 text-white' onClick={handleSubmit} ml={3}>

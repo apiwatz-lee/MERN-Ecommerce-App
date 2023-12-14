@@ -1,10 +1,6 @@
 import React from 'react'
-import { useContext } from 'react'
-import { AppContext } from '../App'
 
-const Input = ({id,title,type,placeholder,value,onChange}) => {
-
-  const {errorMessage} = useContext(AppContext)
+const Input = ({title,type,placeholder,value,onChange}) => {
 
   return (
     <div className='flex flex-col gap-2'>
@@ -16,7 +12,6 @@ const Input = ({id,title,type,placeholder,value,onChange}) => {
               value={value}
               onChange={onChange}
               />
-              {errorMessage && <p className='text-red-500'>{errorMessage[id]}</p>}
     </div>
   )
 }

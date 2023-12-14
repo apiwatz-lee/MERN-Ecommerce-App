@@ -12,13 +12,13 @@ function App() {
 
   const [name,setName] = useState('')
   const [code,setCode] = useState('')
-  const [price,setPrice] = useState()
+  const [price,setPrice] = useState('')
   const [avatars,setAvatars] = useState([])
   const [isLoading,setIsLoading] = useState(false)
   const [isSubmit,setIsSubmit] = useState(false)
   const [isCompleted,setIsCompleted] = useState(false)
   const [keyword,setKeyword] = useState('')
-  const [errorMessage,setErrorMessage] = useState(null)
+
 
   return (
     <>
@@ -39,8 +39,6 @@ function App() {
         setIsCompleted,
         keyword,
         setKeyword,
-        errorMessage,
-        setErrorMessage
       }}>
         <ChakraProvider>
           <BrowserRouter>
