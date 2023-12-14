@@ -7,6 +7,7 @@ import { db } from "./utils/db.js";
 import multer from "multer";
 import cloudinary from "cloudinary";
 import { cloudinaryUpload } from "./utils/upload.js";
+import { ObjectId } from "mongodb";
 
 
 async function init(){
@@ -54,6 +55,17 @@ async function init(){
             return res.status(404).json({error:error})
         }
        
+    })
+
+    app.get('/product/:id',async(req,res)=>{
+        try {
+            const productId = new ObjectId(req.params.id)
+            const collection = db.collection('products')
+            const getProductId = await collection.find({_id:productId}).toArray();
+            return res.status(200).json({data:getProductId})
+        } catch (error) {
+            return res.status(404).json({error:error})
+        }
     })
 
     app.post('/product/upload', avatarUpload, async(req,res)=>{

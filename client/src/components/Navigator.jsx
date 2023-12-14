@@ -8,7 +8,7 @@ export default function Navigator() {
  
     const path = [
         {id:1,name:'Product list',path:'/product'},
-        {id:2,name:'Product Details',path:'/product/detail'},
+        {id:2,name:'Product Details',path:'/product/detail/1'},
         {id:3,name:'Upload Products',path:'/product/upload'}
     ]
 

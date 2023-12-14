@@ -50,7 +50,7 @@ function App() {
             <Routes>
               <Route path='/product' element={<ProductListPage/>}/>
               <Route path='/product/upload' element={<UploadProductPage/>}/>
-              <Route path='/product/detail' element={<ProductDetails/>}/>
+              <Route path='/product/detail/:id' element={<ProductDetails/>}/>
             </Routes>
           </BrowserRouter>
         </ChakraProvider>
