@@ -56,6 +56,17 @@ const Dropzone = () => {
               position:'top'
             })
         }
+
+        if(fileRejections.length > 6){
+          toast({
+            title: 'Image Type.',
+            description: "Product images can drag up to 6 images",
+            status: 'error',
+            duration: 3000,
+            isClosable: true,
+            position:'top'
+          })
+      }
       },[fileRejections])
 
       console.log(fileRejections);
@@ -80,7 +91,7 @@ const Dropzone = () => {
                                     </label>}   
 
                     {isDragReject && 
-                                    <p className='font-bold text-3xl text-red-800 text-center'> 😯 Sorry, uploaded files must be in JPG or PNG format.</p>}
+                                    <p className='font-bold text-3xl text-red-800 text-center'> 😯 Sorry! Product images only accept JPG or PNG formats.</p>}
                 </div>
         }
 

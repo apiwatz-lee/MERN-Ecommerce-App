@@ -32,11 +32,11 @@ const UploadProductPage = () => {
   }
 
   const handleUpload = async(formData) => {
-      await axios.post('http://localhost:4000/upload',formData,{
+      await axios.post('http://localhost:4000/product/upload',formData,{
       headers: {'Content-Type': 'multipart/form-data'},
     })
       setIsLoading(false)
-      navigate('/products');
+      navigate('/product');
       setIsCompleted(true)
   }
 

@@ -6,8 +6,9 @@ export default function Navigator() {
     const location = useLocation();
  
     const path = [
-        {id:1,name:'Product list',path:'/products'},
-        {id:2,name:'Upload Products',path:'/upload'}
+        {id:1,name:'Product list',path:'/product'},
+        {id:2,name:'Product Details',path:'/product/detail'},
+        {id:3,name:'Upload Products',path:'/product/upload'}
     ]
 
     const link = path.map((item)=>{
@@ -19,9 +20,13 @@ export default function Navigator() {
     })
 
     return (
-        <nav className='mt-2'>
-            <ul className='flex justify-center items-center gap-5 p-3 group text-gray-900'>
+        <nav className='flex justify-between items-center'>
+            <ul className='flex justify-center items-center gap-5 p-3 text-gray-900 w-[515px]'>
                 {link}
+            </ul>
+
+            <ul className='flex justify-center items-center gap-5 p-3 text-gray-900 w-[200px]'>
+                cart
             </ul>
         </nav>
     )

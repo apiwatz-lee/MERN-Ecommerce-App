@@ -9,7 +9,15 @@ import { useToast } from '@chakra-ui/react';
 
 const Form = () => {
 
-    const {name,setName,code,setCode,price,setPrice,avatars,setIsSubmit} = useContext(AppContext)
+    const {name,
+          setName,
+          code,
+          setCode,
+          price,
+          setPrice,
+          avatars,
+          setIsSubmit} = useContext(AppContext)
+          
     const navigate = useNavigate();
     const toast = useToast()
 

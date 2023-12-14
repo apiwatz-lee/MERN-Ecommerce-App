@@ -56,7 +56,7 @@ async function init(){
        
     })
 
-    app.post('/upload', avatarUpload, async(req,res)=>{
+    app.post('/product/upload', avatarUpload, async(req,res)=>{
 
         try {
             const products = {

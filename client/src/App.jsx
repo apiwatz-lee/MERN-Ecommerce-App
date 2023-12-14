@@ -3,6 +3,7 @@ import './App.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import ProductListPage from './pages/ProductListPage'
 import UploadProductPage from './pages/UploadProductPage'
+import ProductDetails from './pages/ProductDetails'
 import Navigator from './components/Navigator'
 import { ChakraProvider } from '@chakra-ui/react'
 
@@ -44,8 +45,9 @@ function App() {
           <BrowserRouter>
             <Navigator/>
             <Routes>
-              <Route path='/products' element={<ProductListPage/>}/>
-              <Route path='/upload' element={<UploadProductPage/>}/>
+              <Route path='/product' element={<ProductListPage/>}/>
+              <Route path='/product/upload' element={<UploadProductPage/>}/>
+              <Route path='/product/detail' element={<ProductDetails/>}/>
             </Routes>
           </BrowserRouter>
         </ChakraProvider>
