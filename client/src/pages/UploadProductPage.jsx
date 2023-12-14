@@ -1,4 +1,4 @@
-import React, { useState,useCallback } from 'react'
+import React, { useState,useCallback,useContext } from 'react'
 import Input from '../components/Input'
 import Button from '../components/Button'
 import axios from 'axios'
@@ -8,16 +8,24 @@ import { v4 as uuidv4 } from 'uuid';
 import ProductConfirmation from '../components/ProductConfirmation'
 import { useDisclosure } from "@chakra-ui/react";
 import Loading from '../components/Loading'
+import App, { AppContext } from '../App'
 
 const UploadProductPage = () => {
 
-  const [name,setName] = useState('')
-  const [code,setCode] = useState('')
-  const [price,setPrice] = useState(0)
-  const [avatars,setAvatars] = useState([])
-  const [isLoading,setIsLoading] = useState(false)
-  const [isSubmit,setIsSubmit] = useState(false)
-  const [isCompleted,setIsCompleted] = useState(false)
+  const {name,
+        setName,
+        code,
+        setCode,
+        price,
+        setPrice,
+        avatars,
+        setAvatars,
+        isLoading,
+        setIsLoading,
+        isSubmit,
+        setIsSubmit,
+        isCompleted,
+        setIsCompleted} = useContext(AppContext)
 
   const {onClose} = useDisclosure();
 
@@ -48,8 +56,8 @@ const UploadProductPage = () => {
       headers: {'Content-Type': 'multipart/form-data'},
     })
       setIsLoading(false)
-      setIsCompleted(true)
       navigate('/products');
+      setIsCompleted(true)
   }
 
   const handleCancel = () => {
@@ -113,14 +121,13 @@ const UploadProductPage = () => {
              </div>
           }
          
-
           <div className='flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-10'>
             {avatars.map((file)=>{
                 return (
                 <div key={file.id} className='relative flex flex-col justify-center items-center w-32'>
                   <img src={file.preview} alt={file.name} className='w-32 h-32 rounded-2xl object-cover'/>
                   <button onClick={(e)=> handleRemoveImage(e,file.id)} className='absolute top-[-10px] right-[-10px] rounded-full bg-[#E04132] text-white w-8 h-8'>x</button>
-                </div>);
+                </div>)
             })}
           </div>
 

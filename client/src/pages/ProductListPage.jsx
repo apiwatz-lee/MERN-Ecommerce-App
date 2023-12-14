@@ -1,10 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect,useContext } from 'react'
 import ProductList from '../components/ProductList';
 import { PiMagnifyingGlassThin } from "react-icons/pi";
+import { useToast } from '@chakra-ui/react';
+import App, { AppContext } from '../App';
 
 const ProductListPage = () => {
 
-  const [keyword,setKeyword] = useState('')
+  const {keyword,setKeyword,isCompleted,setIsCompleted,setName,setCode,setPrice,setAvatars} = useContext(AppContext)
+
+  const toast = useToast()
+
+  useEffect(()=>{
+    if(isCompleted)
+      {toast({
+        title: 'Product Uplaoded.',
+        description: "Product have been created successfully",
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
+    }
+    setIsCompleted(false)
+    setName('')
+    setCode('')
+    setPrice()
+    setAvatars([])
+  },[])
   
 
   return (
