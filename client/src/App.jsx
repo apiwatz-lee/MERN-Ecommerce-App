@@ -3,9 +3,10 @@ import './App.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import ProductListPage from './pages/ProductListPage'
 import UploadProductPage from './pages/UploadProductPage'
-import ProductDetails from './pages/ProductDetails'
+import ProductDetailsPage from './pages/ProductDetailsPage'
 import Navigator from './components/Navigator'
 import { ChakraProvider } from '@chakra-ui/react'
+import ProductCartPage from './pages/ProductCartPage'
 
 export const AppContext = createContext(null)
 
@@ -20,6 +21,7 @@ function App() {
   const [isSubmit,setIsSubmit] = useState(false)
   const [isCompleted,setIsCompleted] = useState(false)
   const [keyword,setKeyword] = useState('')
+  const [cart,setCart] = useState([])
 
 
   return (
@@ -43,6 +45,8 @@ function App() {
         setIsCompleted,
         keyword,
         setKeyword,
+        cart,
+        setCart
       }}>
         <ChakraProvider>
           <BrowserRouter>
@@ -50,7 +54,8 @@ function App() {
             <Routes>
               <Route path='/product' element={<ProductListPage/>}/>
               <Route path='/product/upload' element={<UploadProductPage/>}/>
-              <Route path='/product/detail/:id' element={<ProductDetails/>}/>
+              <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
+              <Route path='/product/cart' element={<ProductCartPage/>}/>
             </Routes>
           </BrowserRouter>
         </ChakraProvider>
