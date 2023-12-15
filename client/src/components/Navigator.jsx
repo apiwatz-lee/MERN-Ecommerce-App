@@ -28,10 +28,11 @@ export default function Navigator() {
                 {link}
             </ul>
 
-            <ul className={`flex justify-center items-center gap-5 p-3 ${location.pathname === '/product/cart' ? 'border border-red-500':null}`}>
-                <FiShoppingCart 
-                    onClick={()=>navigate('/product/cart/')}
-                    className={`text-2xl text-gray-500 hover:text-gray-800 duration-500 cursor-pointer`}/>
+            <ul className={`flex justify-center items-center gap-5 p-2 ${location.pathname === '/product/cart' ? 'border bg-gray-200 duration-500 p-3 rounded-full':null}`}>
+                <Link to ='/product/cart'>
+                    <FiShoppingCart 
+                        className={`text-xl text-gray-500 hover:text-gray-800 duration-500 cursor-pointer`}/>
+                </Link>
             </ul>
         </nav>
     )

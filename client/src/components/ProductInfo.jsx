@@ -1,34 +1,25 @@
 import React from 'react'
 import { useContext } from 'react';
 import { AppContext } from '../App';
-import { useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 
 const ProductInfo = ({productDetail,handlePreview,preview}) => {
 
   const {cart,setCart} = useContext(AppContext)
 
-  const [piece,setPiece] = useState(1)
-
   const navigate = useNavigate();
 
   const handleAddToCart = () => {
-    setCart({...productDetail[0],piece:piece})
+   setCart([...cart,{...productDetail[0],quantity:1,amount:productDetail[0].price}]) 
+   navigate('/product/cart')
   }
 
   const formatNumber = (num) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   };
 
-  const handleAddPiece = () => {
-    setPiece((prev)=>prev+1)
-  }
-
-  const handleReducePiece = () => {
-    if(piece > 1){
-      setPiece((prev)=>prev-1)
-    }
-  }
+  
+  console.log(productDetail[0]?.price);
 
 
   return (
@@ -50,22 +41,6 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
               Add to cart
             </button>
 
-            <div className='w-48 h-10 rounded-xl flex justify-center items-center border'>
-              <button 
-                className='border w-20 h-10 rounded-l-lg p-1'
-                onClick={()=> handleReducePiece()}
-                >-</button>
-              <input 
-                className='border w-28 h-10 p-1 outline-none text-center' 
-                type="number" 
-                placeholder='pcs' 
-                value={piece} 
-                onChange={(e)=>setPiece(e.target.value)} />
-              <button 
-                className='border w-20 h-10 rounded-r-lg p-1'
-                onClick={()=> handleAddPiece()}
-                >+</button>
-            </div>
           </div>
 
           </div>

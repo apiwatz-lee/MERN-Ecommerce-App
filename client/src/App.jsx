@@ -46,7 +46,7 @@ function App() {
         keyword,
         setKeyword,
         cart,
-        setCart
+        setCart,
       }}>
         <ChakraProvider>
           <BrowserRouter>
