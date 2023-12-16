@@ -92,7 +92,6 @@ const Form = () => {
             <h3 className='text-center sm:text-right text-gray-400 text-sm font-light'>Image Upload ({avatars.length}/6)</h3>
             <Input 
                 id='name' 
-                className={`border rounded-full p-3 pl-7 placeholder:font-light placeholder:text-gray-300 outline-none text-gray-500 font-light`}
                 title='Product name' 
                 type='text' 
                 placeholder='Product name' 
@@ -100,7 +99,6 @@ const Form = () => {
                 onChange={(e)=>{setName(e.target.value)}}/>
             <Input 
                 id='code' 
-                className={`border rounded-full p-3 pl-7 placeholder:font-light placeholder:text-gray-300 outline-none text-gray-500 font-light`}
                 title='Code' 
                 type='text' 
                 placeholder='Code' 
@@ -108,7 +106,6 @@ const Form = () => {
                 onChange={(e)=>{setCode(e.target.value)}}/>
             <Input 
                 id='price' 
-                className={`border rounded-full p-3 pl-7 placeholder:font-light placeholder:text-gray-300 outline-none text-gray-500 font-light`}
                 title='Price' 
                 type='number' 
                 placeholder='1,000' 

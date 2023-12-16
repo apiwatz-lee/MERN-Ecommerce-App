@@ -17,6 +17,7 @@ function App() {
   const [price,setPrice] = useState('')
   const [description,setDescription] = useState('')
   const [avatars,setAvatars] = useState([])
+  const [isCancel,setIsCancel] = useState(false)
   const [isLoading,setIsLoading] = useState(false)
   const [isSubmit,setIsSubmit] = useState(false)
   const [isCompleted,setIsCompleted] = useState(false)
@@ -24,7 +25,6 @@ function App() {
   const [cart,setCart] = useState([])
   const [totalAmount,setTotalAmount] = useState(0)
   const [totalQuantity,setTotalQuantity] = useState(0)
-
 
   return (
     <>
@@ -39,6 +39,8 @@ function App() {
         setDescription,
         avatars,
         setAvatars,
+        isCancel,
+        setIsCancel,
         isLoading,
         setIsLoading,
         isSubmit,

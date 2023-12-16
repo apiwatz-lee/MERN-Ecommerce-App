@@ -12,7 +12,7 @@ import {
   import { AppContext } from '../App';
 
 const ProductConfirmation = ({handleSubmit}) => {
-    
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const {isSubmit,setIsSubmit} = useContext(AppContext)
     const cancelRef = React.useRef()
@@ -24,6 +24,7 @@ const ProductConfirmation = ({handleSubmit}) => {
         }else{
             onClose();
         }
+
 
     },[isSubmit])
 

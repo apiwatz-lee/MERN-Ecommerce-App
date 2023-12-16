@@ -32,34 +32,53 @@ const ProductCartSummary = () => {
 
 
     return (
-        <table className='border w-[500px] lg:w-[700px] h-max mt-5 rounded-xl p-5 flex flex-col items-stretch gap-5'>
-          <h1 className='text-center font-bold text-[#E04132] text-3xl'>Summary</h1>
+      <>
+        <div className='hidden sticky top-20 shadow-xl w-[500px] lg:w-[700px] h-max mt-5 rounded-xl p-5 lg:flex flex-col items-stretch gap-5'>
+          <h1 className='text-center font-bold text-[#E04132] text-3xl'>Your Orders</h1>
 
-          <tr className='grid grid-cols-4 justify-items-center'>
-              <th className='font-medium'>Product</th>
-              <th className='font-medium'>Price(THB)</th>
-              <th className='font-medium'>Quantity(pcs.)</th>
-              <th className='font-medium'>Amount(THB)</th>
-          </tr>
+          <div className='grid grid-cols-4 justify-items-center'>
+              <span className='font-medium'>Product</span>
+              <span className='font-medium'>Price(THB)</span>
+              <span className='font-medium'>Quantity(pcs.)</span>
+              <span className='font-medium'>Amount(THB)</span>
+          </div>
 
           {cart.map((item)=>{
             return ( 
-              <tr className='grid grid-cols-4 justify-items-center' key={item._id}>
-                <td className='text-gray-500'>{item.name}</td>
-                <td className='text-gray-500'>{formatNumber(item.price)}</td>
-                <td className='text-gray-500'>{item.quantity}</td>
-                <td className='text-gray-500'>{formatNumber(item.amount)}</td>
-              </tr>
+              <div className='grid grid-cols-4 justify-items-center' key={item._id}>
+                <span className='text-gray-500 font-light'>{item.name}</span>
+                <span className='text-gray-500 font-light'>{formatNumber(item.price)}</span>
+                <span className='text-gray-500 font-light'>{item.quantity}</span>
+                <span className='text-gray-500 font-light'>{formatNumber(item.amount)}</span>
+              </div>
           )})}
 
-          <tr className='grid grid-cols-4 justify-items-center text-[#E04132] mt-5 border-b pb-2'>
-            <td className='col-span-2 font-bold text-2xl'>Total</td>
-            <td className='font-bold text-2xl'>{totalQuantity}</td>
-            <td className='font-bold text-2xl'>{formatNumber(totalAmount)}</td>
-          </tr>
-        </table>
+          <div className='grid grid-cols-4 justify-items-center text-[#E04132] mt-5 pb-2'>
+            <span className='col-span-2 font-bold text-2xl'>Total</span>
+            <span className='font-bold text-3xl'>{totalQuantity}</span>
+            <span className='font-bold text-3xl'>{formatNumber(totalAmount)}</span>
+          </div>
+        </div>
 
-        
+        <div className='lg:hidden w-[290px] flex flex-col justify-center items-center shadow-xl rounded-xl gap-5'>
+              <h1 className='text-2xl text-[#E04132] font-semibold'>Your Orders</h1>
+              {cart.map((item)=>{
+                  return (  
+                  <div className='grid grid-cols-3 text-xs justify-self-center p-1 text-center' key={item._id}>
+                    <p className='text-start'>{item.name}</p>
+                    <p>{formatNumber(item.price)}</p>
+                    <p>{item.quantity} pcs</p>
+                 </div>)
+              })}
+              
+              <div className='flex flex-col justify-center items-center'>
+                <p className='font-medium'>Total Amount</p>
+                <span className='text-2xl font-semibold text-[#E04132]'>{formatNumber(totalAmount)}</span>
+              </div>
+            
+        </div>
+
+        </>  
     )
 }
 

@@ -6,6 +6,7 @@ import Loading from '../components/Loading'
 import { AppContext } from '../App'
 import Form from '../components/Form'
 import Navigator from '../components/Navigator'
+import { useDisclosure } from "@chakra-ui/react";
 
 const UploadProductPage = () => {
 
@@ -19,6 +20,15 @@ const UploadProductPage = () => {
         setIsCompleted} = useContext(AppContext)
 
   const navigate = useNavigate();
+  const {isOpen:isUploadOpen,onOpen:onUploadOpen,onClose:onUploadClose} = useDisclosure();
+  const message = {
+    header:'Upload Product Confirmation',
+    description:'Are you sure you want to proceed ?',
+    cancel:'Cancel',
+    corect:'Confirm!'
+}
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,6 +62,10 @@ const UploadProductPage = () => {
           <Form/>
           <ProductConfirmation
             handleSubmit={handleSubmit}
+            isOpen={isUploadOpen}
+            onOpen={onUploadOpen}
+            onClose={onUploadClose}
+            message={message}
           />
           <Loading/>
         </section>

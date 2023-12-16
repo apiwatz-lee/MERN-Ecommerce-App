@@ -1,13 +1,14 @@
 import React from 'react'
 import { useContext } from 'react';
 import { AppContext } from '../App';
+import { useToast } from '@chakra-ui/react';
 import {useNavigate} from 'react-router-dom'
 
 const ProductInfo = ({productDetail,handlePreview,preview}) => {
 
   const {cart,setCart} = useContext(AppContext)
-
-  const navigate = useNavigate();
+  const toast = useToast()
+  const navigate = useNavigate()
 
   const handleAddToCart = () => {
     const newCart = [...cart]
@@ -15,12 +16,28 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
     if(productExist){
       const findProduct = newCart.find((item)=>item._id === productDetail[0]._id)
       findProduct.quantity++
+      findProduct.amount = findProduct.price * findProduct.quantity
       setCart(newCart)
+      toast({
+        title: 'Already in cart',
+        description: `The quantity of ${productDetail[0]?.name} has been added to ${findProduct.quantity} in the cart successfully`,
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+        position:'top'
+      })
     }else{
-      setCart([...cart,{...productDetail[0],quantity:1,amount:productDetail[0].price}]) 
+      setCart([...cart,{...productDetail[0],quantity:1,amount:productDetail[0].price}])
+      toast({
+        title: 'Add to the cart',
+        description: `${productDetail[0]?.name} is added to the cart successfully`,
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+        position:'top'
+      }) 
     }
-   
-    navigate('/product/')
+    
   }
 
   const formatNumber = (num) => {
@@ -29,18 +46,23 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
 
   return (
     <>
-        <main className='xl:w-[50%] flex flex-col-reverse xl:flex-col justify-center gap-12'>
+        <div className='xl:w-[50%] flex flex-col-reverse xl:flex-col justify-center gap-5 sm:gap-12'>
 
-          <section className='w-full xl:h-[320px] px-5 text-center xl:text-start flex flex-col justify-evenly'>
+          <section className='w-full xl:h-[340px] px-5 text-center xl:text-start flex flex-col justify-evenly gap-3'>
             <h1 className='w-full pt-5 xl:pt-0 font-bold text-3xl xl:text-5xl text-center'>{productDetail[0]?.name}</h1>
-            <p className='text-gray-400'>{productDetail[0]?.code}</p>
-            <p className='text-[#E04132] font-bold text-xl'>{productDetail[0]?.price && formatNumber(productDetail[0].price)} ฿</p>
+            <p className='text-gray-400 text-center text-xl'>{productDetail[0]?.code}</p>
+            <p className='text-[#E04132] font-bold text-4xl'>{productDetail[0]?.price && formatNumber(productDetail[0].price)} ฿</p>
             <p className='text-gray-800'>{productDetail[0]?.description}</p>
-            <div className='w-full pb-10 xl:pb-0 mt-2 flex justify-center items-center gap-20 py-5'>
+            <div className='w-full pb-10 xl:pb-0 mt-2 flex justify-center items-center gap-5 py-5'>
               <button 
                 onClick={()=>handleAddToCart()}
-                className='border p-3 rounded-xl w-36 text-white bg-[#E04132] hover:bg-orange-700 duration-300'> 
+                className='border p-4 rounded-xl w-52 text-white bg-[#E04132] text-lg sm:text-2xl font-bold hover:bg-orange-700 duration-300'> 
                 Add to cart
+              </button>
+              <button 
+                onClick={()=>navigate('/product')}
+                className='border p-4 rounded-xl w-52 text-gray-700 bg-gray-300 text-lg sm:text-2xl font-bold hover:bg-white hover:text-black duration-300'> 
+                Shop more
               </button>
             </div>
           </section>
@@ -52,7 +74,7 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
                   key={item.publicId}
                   src={item.url} 
                   alt="products" 
-                  className={`${item.publicId === preview[0].publicId ? 'opacity-100' : 'opacity-20'} object-cover w-16 sm:w-20 rounded-xl`}
+                  className={`${item.publicId === preview[0].publicId ? 'opacity-100' : 'opacity-20'} object-cover w-14 sm:w-20 h-18 sm:h-24  rounded-xl`}
                   onMouseOver={()=>handlePreview(item.publicId)}
               />)
               :
@@ -61,13 +83,13 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
                   key={item.publicId}
                   src={item.url} 
                   alt="products" 
-                  className={`${item.publicId === productDetail[0].avatars[0].publicId ? 'opacity-100' : 'opacity-20'} object-cover w-16 sm:w-20 rounded-xl`}
+                  className={`${item.publicId === productDetail[0].avatars[0].publicId ? 'opacity-100' : 'opacity-20'} object-cover w-14 sm:w-20 h-18 sm:h-24  rounded-xl`}
                   onMouseOver={()=>handlePreview(item.publicId)}
               />)                               
             }              
           </section>
 
-        </main>
+        </div>
     </>
   )
 }
