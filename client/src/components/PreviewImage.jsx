@@ -1,4 +1,6 @@
 import React from 'react'
+import { useContext } from 'react'
+import { AppContext } from '../App'
 
 const PreviewImage = ({preview,productDetail}) => {
   return (

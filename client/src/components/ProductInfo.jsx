@@ -20,7 +20,7 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
       setCart([...cart,{...productDetail[0],quantity:1,amount:productDetail[0].price}]) 
     }
    
-    navigate('/product/cart')
+    navigate('/product/')
   }
 
   const formatNumber = (num) => {
@@ -45,32 +45,6 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
             </div>
           </section>
       
-          {/* <section className='xl:px-5 grid grid-rows-2 grid-cols-3 gap-y-6 justify-items-center w-full h-auto mt-5'>
-            { preview.length !== 0 ?                 
-              productDetail[0]?.avatars?.map((item)=> 
-                <img 
-                  key={item.publicId}
-                  src={item.url} 
-                  alt="products" 
-                  className={`${item.publicId === preview[0].publicId ? 'opacity-100' : 'opacity-20'} 
-                  w-[90px] h-[80px] sm:w-[140px] sm:h-[120px] md:w-[180px] md:h-[160px] lg:w-[220px] lg:h-[200px] xl:w-[140px] xl:h-[100px] 2xl:w-[180px] 2xl:h-[170px] 
-                  rounded-xl object-cover cursor-pointer border`}
-                  onMouseOver={()=>handlePreview(item.publicId)}
-              />)
-              :
-              productDetail[0]?.avatars.map((item)=> 
-                <img 
-                  key={item.publicId}
-                  src={item.url} 
-                  alt="products" 
-                  className={`${item.publicId === productDetail[0].avatars[0].publicId ? 'opacity-100' : 'opacity-20'} 
-                  w-[90px] h-[80px] sm:w-[140px] sm:h-[120px] md:w-[180px] md:h-[160px] lg:w-[220px] lg:h-[200px] xl:w-[140px] xl:h-[100px] 2xl:w-[180px] 2xl:h-[170px] 
-                  rounded-xl object-cover cursor-pointer border`}
-                  onMouseOver={()=>handlePreview(item.publicId)}
-              />)                               
-            }              
-          </section> */}
-
           <section className='flex flex-wrap justify-center gap-3 px-5'>
             { preview.length !== 0 ?                 
               productDetail[0]?.avatars?.map((item)=> 

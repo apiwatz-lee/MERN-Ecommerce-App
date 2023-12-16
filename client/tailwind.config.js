@@ -8,6 +8,9 @@ export default {
     extend: {
       fontFamily:{
         poppins:['Poppins', 'sans-serif']
+      },
+      backgroundImage: {
+        'shopping': "url('./assets/img/Shopping.jpg')"
       }
     },
   },

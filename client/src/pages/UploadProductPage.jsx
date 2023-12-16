@@ -5,6 +5,7 @@ import ProductConfirmation from '../components/ProductConfirmation'
 import Loading from '../components/Loading'
 import { AppContext } from '../App'
 import Form from '../components/Form'
+import Navigator from '../components/Navigator'
 
 const UploadProductPage = () => {
 
@@ -43,16 +44,19 @@ const UploadProductPage = () => {
   }
 
   return (
-    <main className='font-poppins w-screen flex flex-col items-center gap-5'>
-      <h1 className='text-3xl font-medium w-[90vw] pt-5 text-center sm:text-left'>Upload Product</h1>     
-      <section className='flex flex-col justify-center items-center w-[75%]'>
-        <Form/>
-        <ProductConfirmation
-          handleSubmit={handleSubmit}
-        />
-        <Loading/>
-      </section>
-    </main>
+    <>
+      <Navigator/>
+      <main className='font-poppins w-screen flex flex-col items-center gap-5'>
+        <h1 className='text-3xl font-medium w-[90vw] pt-5 text-center sm:text-left'>Upload Product</h1>     
+        <section className='flex flex-col justify-center items-center w-[75%]'>
+          <Form/>
+          <ProductConfirmation
+            handleSubmit={handleSubmit}
+          />
+          <Loading/>
+        </section>
+      </main>
+    </>
   )
 }
 

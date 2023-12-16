@@ -1,14 +1,13 @@
 import React, { useEffect,useContext } from 'react'
 import ProductList from '../components/ProductList';
-import { PiMagnifyingGlassThin } from "react-icons/pi";
 import { useToast } from '@chakra-ui/react';
 import { AppContext } from '../App';
 import SearchBar from '../components/SearchBar';
+import Navigator from '../components/Navigator';
 
 const ProductListPage = () => {
 
-  const {keyword,
-        isCompleted,
+  const {isCompleted,
         setIsCompleted,
         setName,
         setCode,
@@ -42,11 +41,14 @@ const ProductListPage = () => {
   
 
   return (
-    <main className='font-poppins w-screen h-screen flex flex-col items-center gap-5'>
-        <h1 className='text-3xl font-medium w-[90vw] pt-5'>Product list</h1>
-        <SearchBar/>
-        <ProductList keyword={keyword}/>
-    </main>
+    <>
+      <Navigator/>
+      <main className='font-poppins w-screen h-screen flex flex-col items-center gap-5'>
+          <h1 className='text-3xl font-medium w-[90vw] pt-5'>Product list</h1>
+          <SearchBar/>
+          <ProductList/>
+      </main>
+    </>
   )
 }
 

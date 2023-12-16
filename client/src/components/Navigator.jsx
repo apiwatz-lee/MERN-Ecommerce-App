@@ -8,22 +8,20 @@ export default function Navigator() {
 
     const location = useLocation();
     const {cart} = useContext(AppContext)
-    console.log(cart.length);
  
     const path = [
         {id:1,name:'Product list',path:'/product'},
         {id:2,name:'Upload Products',path:'/product/upload'}
     ]
 
-
     const link = path.map((item)=>{
-        return <Link 
+        return <li key={item.id}>
+                    <Link 
                     to={item.path} 
-                    key={item.id} 
                     className={`text-[15px] sm:text-base text-center text-gray-500 hover:text-gray-800 duration-500 
                             ${location.pathname === item.path ? 'text-gray-950 underline-offset-8 bg-gray-100 p-2 rounded-xl':null}`}>{item.name}</Link>
+                </li>
     })
-
 
     return (
         <nav className='flex justify-between lg:text-base items-center px-10 sm:px-20 mt-5'>
