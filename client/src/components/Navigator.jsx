@@ -1,11 +1,14 @@
 import React from 'react';
 import {Link, useLocation,useNavigate} from 'react-router-dom'
 import { FiShoppingCart } from "react-icons/fi";
+import { useContext } from 'react';
+import { AppContext } from '../App';
 
 export default function Navigator() {
 
     const location = useLocation();
-    const navigate = useNavigate();
+    const {cart} = useContext(AppContext)
+    console.log(cart.length);
  
     const path = [
         {id:1,name:'Product list',path:'/product'},
@@ -23,16 +26,18 @@ export default function Navigator() {
 
 
     return (
-        <nav className='flex justify-between lg:text-base items-center px-10 sm:px-20'>
+        <nav className='flex justify-between lg:text-base items-center px-10 sm:px-20 mt-5'>
             <ul className='flex justify-center items-center gap-5 lg:p-3'>
                 {link}
             </ul>
 
-            <ul className={`flex justify-center items-center gap-5 p-2 ${location.pathname === '/product/cart' ? 'border bg-gray-200 duration-500 p-3 rounded-full':null}`}>
-                <Link to ='/product/cart'>
-                    <FiShoppingCart 
-                        className={`text-xl text-gray-500 hover:text-gray-800 duration-500 cursor-pointer`}/>
-                </Link>
+            <ul className={`relative flex justify-center items-center gap-5 p-3 ${location.pathname === '/product/cart' ? 'border bg-gray-200 duration-500 p-3 rounded-full':null}`}>
+       
+                    <Link to ='/product/cart'>
+                        <FiShoppingCart className={`text-xl text-gray-500 hover:text-gray-800 duration-500 cursor-pointer`}/>
+                        {cart.length !== 0 && <span className='absolute border bg-orange-500 text-white rounded-full w-5 h-5 text-center text-[12px] top-[-5px] right-1 flex justify-center items-center'>{cart.length}</span>}
+                    </Link>
+             
             </ul>
         </nav>
     )

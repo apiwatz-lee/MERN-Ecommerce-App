@@ -10,8 +10,17 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
   const navigate = useNavigate();
 
   const handleAddToCart = () => {
-   setCart([...cart,{...productDetail[0],quantity:1,amount:productDetail[0].price}]) 
-   navigate('/product/cart')
+    const newCart = [...cart]
+    const productExist = newCart.some((item)=>item._id === productDetail[0]._id)
+    if(productExist){
+      const findProduct = newCart.find((item)=>item._id === productDetail[0]._id)
+      findProduct.quantity++
+      setCart(newCart)
+    }else{
+      setCart([...cart,{...productDetail[0],quantity:1,amount:productDetail[0].price}]) 
+    }
+   
+    navigate('/product/cart')
   }
 
   const formatNumber = (num) => {
@@ -19,7 +28,8 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
   };
 
   
-  console.log(productDetail[0]?.price);
+  console.log('ProductFromServer',productDetail);
+  console.log('cart',cart)
 
 
   return (
