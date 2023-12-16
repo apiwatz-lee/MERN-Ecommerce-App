@@ -27,37 +27,25 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   };
 
-  
-  console.log('ProductFromServer',productDetail);
-  console.log('cart',cart)
-
-
   return (
     <>
-        <section className='xl:w-[50%] flex flex-col-reverse xl:flex-col justify-center gap-5 xl:gap-5'>
+        <main className='xl:w-[50%] flex flex-col-reverse xl:flex-col justify-center gap-12'>
 
-          <div className='w-full xl:h-[320px] px-5 text-center xl:text-start flex flex-col justify-evenly'>
-          
-          <h1 className='w-full pt-5 xl:pt-0 font-bold text-3xl xl:text-5xl text-center'>{productDetail[0]?.name}</h1>
-          <p className='text-gray-400'>{productDetail[0]?.code}</p>
-          <p className='text-[#E04132] font-bold text-xl'>{productDetail[0]?.price && formatNumber(productDetail[0].price)} ฿</p>
-          <p className='text-gray-800'>{productDetail[0]?.description}
-          </p>
-
-          <div className='w-full pb-10 xl:pb-0 mt-2 flex justify-center items-center gap-20 py-5'>
-            <button 
-              onClick={()=>handleAddToCart()}
-              className='border p-3 rounded-xl w-36 text-white bg-[#E04132] hover:bg-orange-700 duration-300'> 
-              Add to cart
-            </button>
-
-          </div>
-
-          </div>
+          <section className='w-full xl:h-[320px] px-5 text-center xl:text-start flex flex-col justify-evenly'>
+            <h1 className='w-full pt-5 xl:pt-0 font-bold text-3xl xl:text-5xl text-center'>{productDetail[0]?.name}</h1>
+            <p className='text-gray-400'>{productDetail[0]?.code}</p>
+            <p className='text-[#E04132] font-bold text-xl'>{productDetail[0]?.price && formatNumber(productDetail[0].price)} ฿</p>
+            <p className='text-gray-800'>{productDetail[0]?.description}</p>
+            <div className='w-full pb-10 xl:pb-0 mt-2 flex justify-center items-center gap-20 py-5'>
+              <button 
+                onClick={()=>handleAddToCart()}
+                className='border p-3 rounded-xl w-36 text-white bg-[#E04132] hover:bg-orange-700 duration-300'> 
+                Add to cart
+              </button>
+            </div>
+          </section>
       
-        
-          <div className='xl:px-5 grid grid-rows-2 grid-cols-3 gap-y-6 justify-items-center w-full h-auto mt-5'>
-    
+          {/* <section className='xl:px-5 grid grid-rows-2 grid-cols-3 gap-y-6 justify-items-center w-full h-auto mt-5'>
             { preview.length !== 0 ?                 
               productDetail[0]?.avatars?.map((item)=> 
                 <img 
@@ -70,7 +58,6 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
                   onMouseOver={()=>handlePreview(item.publicId)}
               />)
               :
-              
               productDetail[0]?.avatars.map((item)=> 
                 <img 
                   key={item.publicId}
@@ -82,10 +69,31 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
                   onMouseOver={()=>handlePreview(item.publicId)}
               />)                               
             }              
+          </section> */}
 
-          </div>
+          <section className='flex flex-wrap justify-center gap-3 px-5'>
+            { preview.length !== 0 ?                 
+              productDetail[0]?.avatars?.map((item)=> 
+                <img 
+                  key={item.publicId}
+                  src={item.url} 
+                  alt="products" 
+                  className={`${item.publicId === preview[0].publicId ? 'opacity-100' : 'opacity-20'} object-cover w-16 sm:w-20 rounded-xl`}
+                  onMouseOver={()=>handlePreview(item.publicId)}
+              />)
+              :
+              productDetail[0]?.avatars.map((item)=> 
+                <img 
+                  key={item.publicId}
+                  src={item.url} 
+                  alt="products" 
+                  className={`${item.publicId === productDetail[0].avatars[0].publicId ? 'opacity-100' : 'opacity-20'} object-cover w-16 sm:w-20 rounded-xl`}
+                  onMouseOver={()=>handlePreview(item.publicId)}
+              />)                               
+            }              
+          </section>
 
-        </section>
+        </main>
     </>
   )
 }
