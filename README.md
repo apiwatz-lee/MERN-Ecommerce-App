@@ -43,6 +43,15 @@ To use my Shopping App, visit our website at [Shopping App](https://apwxsurface.
   <img src="https://res.cloudinary.com/dpsrbpkav/image/upload/v1702828497/xsurface/mobile3_bukpcw.jpg" width='200'>
 </div>
 
+## Technology Stack
+- React.JS using Vite
+- Tailwind CSS
+- NodeJs (Express)
+- MongoDB
+- Chakra UI
+- React Dropzone
+
+
 ## Develop by
 [@apiwatz-lee](https://github.com/apiwatz-lee)
 
