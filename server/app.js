@@ -100,7 +100,7 @@ async function init(){
         res.status(404).send('Not found endpoint');
     });
 
-    app.listen(process.env.PORT || 4000,()=>{
+    app.listen(process.env.PORT || port,()=>{
         console.log(`Server is running at ${port}`)
     })
 }
