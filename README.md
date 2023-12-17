@@ -44,12 +44,9 @@ To use my Shopping App, visit our website at [Shopping App](https://apwxsurface.
 </div>
 
 ## Technology Stack
-- React.JS using Vite
-- Tailwind CSS
-- NodeJs (Express)
-- MongoDB
-- Chakra UI
-- React Dropzone
+- Frontend Tools: React.JS using Vite / Tailwind CSS / Chakra UI/ React Dropzone
+- Backend Tools: Node.js Express.js
+- Database: MongoDB
 
 
 ## Develop by
