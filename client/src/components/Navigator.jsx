@@ -19,7 +19,7 @@ export default function Navigator() {
                     <Link 
                     to={item.path} 
                     className={`text-[15px] sm:text-base text-center text-gray-500 hover:text-gray-800 duration-500 
-                            ${location.pathname === item.path ? 'text-gray-950 underline-offset-8 bg-gray-100 sm:p-2 rounded-xl':null}`}>{item.name}</Link>
+                            ${location.pathname === item.path ? 'text-gray-950 font-bold sm:font-normal underline-offset-8 sm:bg-gray-100 sm:p-2 rounded-xl':null}`}>{item.name}</Link>
                 </li>
     })
 
