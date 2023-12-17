@@ -20,18 +20,18 @@ To use my Shopping App, visit our website at [Shopping App](https://apwxsurface.
 - **Preview image:** In case user are not satisfied with user's image selection, user have the option to make edits.
 - **Validation:**  If user attempt to drag more than 6 images or file size is exceed 50MB, the system will automatically reject the excess. Additionally, if user submit the product form without meeting the specified conditions, the system will provide continuous notifications until the product upload is aligned with the requirements.
 - **User Experience:** When user submit the form, the system will display the loading status and promptly notify user once product upload is successfully completed.
-- 
+  
 <img src="https://res.cloudinary.com/dpsrbpkav/image/upload/v1702827887/xsurface/ProductUpload_cd8f3u.png">
 
 ### Product Detail
 - **Description:** In case use interested and would like to explore additional details about any product, simply click on the respective item. user will have access to comprehensive information and a variety of images from different angles, making it convenient for user to make well-informed shopping decisions.
-- 
+  
 <img src="https://res.cloudinary.com/dpsrbpkav/image/upload/v1702827888/xsurface/ProductDetail_weyutm.png">
 
 ### Cart
 - **Add to cart (CTA):** When user find a product that captures user's interest on product details page, our system provide shopping cart feature for allows user to effortlessly add the item to the cart, with a notification confirming the successful addition. In the event that the product is already in user's cart, the system will intelligently increment the quantity, ensuring a smooth and intuitive shopping experience.
 - **Cart:** Users have the flexibility to adjust the quantity of products in their cart, both adding and reducing items. Additionally, a summary list is available for users to review the products in their cart, including the total amount. The system automatically calculates and updates these details, providing a hassle-free and automated shopping experience.
-- 
+  
 <img src="https://res.cloudinary.com/dpsrbpkav/image/upload/v1702827888/xsurface/ProductCart_smpqzl.png">
 
 ### Mobile-Friendly Support
