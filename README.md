@@ -1,4 +1,4 @@
-# Online Shopping App (x-surface-test)
+# Online Shopping Web Application (x-surface-test)
 
 Welcome to Shopping App! This web application is designed to redefine your online shopping experience, offering a curated blend of innovation, user-friendliness, and style. Dive into a world where finding your favorite products is not just a transaction but an exploration.
 
