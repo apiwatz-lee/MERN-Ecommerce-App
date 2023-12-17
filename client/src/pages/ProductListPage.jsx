@@ -4,10 +4,12 @@ import { useToast } from '@chakra-ui/react';
 import { AppContext } from '../App';
 import SearchBar from '../components/SearchBar';
 import Navigator from '../components/Navigator';
+import Loading from '../components/Loading';
 
 const ProductListPage = () => {
 
-  const {isCompleted,
+  const {
+        isCompleted,
         setIsCompleted,
         setName,
         setCode,
@@ -47,6 +49,7 @@ const ProductListPage = () => {
           <h1 className='text-3xl font-medium w-[90vw] pt-5'>Product list</h1>
           <SearchBar/>
           <ProductList/>
+          <Loading/>
       </main>
     </>
   )

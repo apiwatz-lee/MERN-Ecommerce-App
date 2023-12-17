@@ -19,13 +19,13 @@ export default function Navigator() {
                     <Link 
                     to={item.path} 
                     className={`text-[15px] sm:text-base text-center text-gray-500 hover:text-gray-800 duration-500 
-                            ${location.pathname === item.path ? 'text-gray-950 underline-offset-8 bg-gray-100 p-2 rounded-xl':null}`}>{item.name}</Link>
+                            ${location.pathname === item.path ? 'text-gray-950 underline-offset-8 bg-gray-100 sm:p-2 rounded-xl':null}`}>{item.name}</Link>
                 </li>
     })
 
     return (
         <nav className='flex justify-between lg:text-base items-center px-10 sm:px-20 mt-5'>
-            <ul className='flex justify-center items-center gap-5 lg:p-3'>
+            <ul className='flex justify-center items-center gap-5 lg:p-3 h-16'>
                 {link}
             </ul>
 

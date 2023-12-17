@@ -4,10 +4,11 @@ import { useEffect,useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import { useContext } from 'react';
 import { AppContext } from '../App';
+import Loading from './Loading';
 
 const ProductList = () => {
 
-  const {keyword} = useContext(AppContext)
+  const {keyword,setIsLoading} = useContext(AppContext)
 
   const [products,setProducts] = useState([])
   const navigate = useNavigate();
@@ -15,8 +16,10 @@ const ProductList = () => {
   const fetchProducts = async() => {
 
     try {
+      setIsLoading(true)
       const result = await axios.get(`https://xsurface-test-app.onrender.com/products?keyword=${keyword}`)
       setProducts(result.data)
+      setIsLoading(false)
     } catch (error) {
       console.log(error);
     }

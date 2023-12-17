@@ -9,6 +9,7 @@ import { CiShoppingCart } from "react-icons/ci";
 const ProductCartPage = () => {
 
   const {cart} = useContext(AppContext)
+
  
   return (
     <>
@@ -19,7 +20,7 @@ const ProductCartPage = () => {
         {cart.length === 0 ?
           <section className='w-full h-[70vh] flex flex-col lg:flex-row justify-center items-center gap-5'>
             <CiShoppingCart className='text-8xl text-gray-600'/>
-            <p className='text-5xl text-[#E04132] text-center'>Your cart is empty</p>
+            <p className='text-3xl sm:text-5xl text-[#E04132] text-center'>Your cart is empty</p>
           </section>
         :
           <section className='flex flex-col justify-center items-center lg:items-start lg:flex-row gap-5 w-[90vw] pb-10'>

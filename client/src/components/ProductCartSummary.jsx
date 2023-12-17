@@ -7,6 +7,7 @@ const ProductCartSummary = () => {
 
     const {cart,totalQuantity,setTotalQuantity,totalAmount,setTotalAmount} = useContext(AppContext)
 
+
     const formatNumber = (num) => {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
       };
@@ -60,14 +61,14 @@ const ProductCartSummary = () => {
           </div>
         </div>
 
-        <div className='lg:hidden w-[290px] flex flex-col justify-center items-center shadow-xl rounded-xl gap-5'>
+        <div className='lg:hidden w-[290px] flex flex-col justify-center items-center shadow-xl rounded-xl gap-5 p-5'>
               <h1 className='text-2xl text-[#E04132] font-semibold'>Your Orders</h1>
               {cart.map((item)=>{
                   return (  
-                  <div className='grid grid-cols-3 text-xs justify-self-center p-1 text-center' key={item._id}>
-                    <p className='text-start'>{item.name}</p>
-                    <p>{formatNumber(item.price)}</p>
-                    <p>{item.quantity} pcs</p>
+                  <div className='grid grid-cols-3 text-xs justify-self-center p-1 text-center w-full' key={item._id}>
+                    <p className='w-full'>{item.name}</p>
+                    <p className='w-full'>{formatNumber(item.price)}</p>
+                    <p className='w-full'>{item.quantity} pcs</p>
                  </div>)
               })}
               
