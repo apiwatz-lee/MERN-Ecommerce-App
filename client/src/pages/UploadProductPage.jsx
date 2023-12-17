@@ -28,8 +28,6 @@ const UploadProductPage = () => {
     corect:'Confirm!'
 }
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmit(false)

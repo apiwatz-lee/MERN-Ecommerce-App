@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, useLocation,useNavigate} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 import { FiShoppingCart } from "react-icons/fi";
 import { useContext } from 'react';
 import { AppContext } from '../App';

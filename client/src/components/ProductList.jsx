@@ -4,7 +4,6 @@ import { useEffect,useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import { useContext } from 'react';
 import { AppContext } from '../App';
-import Loading from './Loading';
 
 const ProductList = () => {
 
