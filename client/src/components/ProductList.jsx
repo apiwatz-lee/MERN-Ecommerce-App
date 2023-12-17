@@ -15,7 +15,7 @@ const ProductList = () => {
   const fetchProducts = async() => {
 
     try {
-      const result = await axios.get(`http://localhost:4000/products?keyword=${keyword}`)
+      const result = await axios.get(`https://xsurface-test-app.onrender.com/products?keyword=${keyword}`)
       setProducts(result.data)
     } catch (error) {
       console.log(error);

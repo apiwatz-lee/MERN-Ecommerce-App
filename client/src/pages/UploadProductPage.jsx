@@ -45,7 +45,7 @@ const UploadProductPage = () => {
   }
 
   const handleUpload = async(formData) => {
-      await axios.post('http://localhost:4000/product/upload',formData,{
+      await axios.post('https://xsurface-test-app.onrender.com/product/upload',formData,{
       headers: {'Content-Type': 'multipart/form-data'},
     })
       setIsLoading(false)
