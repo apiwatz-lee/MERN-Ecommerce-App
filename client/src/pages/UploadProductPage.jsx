@@ -19,6 +19,7 @@ const UploadProductPage = () => {
         setIsSubmit,
         setIsCompleted} = useContext(AppContext)
 
+  const server = import.meta.env.VITE_API
   const navigate = useNavigate();
   const {isOpen:isUploadOpen,onOpen:onUploadOpen,onClose:onUploadClose} = useDisclosure();
   const message = {
@@ -43,7 +44,7 @@ const UploadProductPage = () => {
   }
 
   const handleUpload = async(formData) => {
-      await axios.post('https://xsurface-test-app.onrender.com/product/upload',formData,{
+      await axios.post(`${server}/product/upload`,formData,{
       headers: {'Content-Type': 'multipart/form-data'},
     })
       setIsLoading(false)

@@ -11,12 +11,14 @@ const ProductList = () => {
 
   const [products,setProducts] = useState([])
   const navigate = useNavigate();
+  const server = import.meta.env.VITE_API
+  
   
   const fetchProducts = async() => {
 
     try {
       setIsLoading(true)
-      const result = await axios.get(`https://xsurface-test-app.onrender.com/products?keyword=${keyword}`)
+      const result = await axios.get(`${server}/products?keyword=${keyword}`)
       setProducts(result.data)
       setIsLoading(false)
     } catch (error) {

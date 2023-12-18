@@ -69,8 +69,6 @@ const Dropzone = () => {
       }
       },[fileRejections])
 
-      console.log(fileRejections);
-
   return (
     <>
       

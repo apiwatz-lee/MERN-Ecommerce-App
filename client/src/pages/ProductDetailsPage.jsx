@@ -10,10 +10,11 @@ const ProductDetails = () => {
   const [productDetail,setProductDetail] = useState([])
   const [preview,setPreview] = useState([])
   const params = useParams();
+  const server = import.meta.env.VITE_API
   
   const getProductById = async() => {
     try {
-      const response = await axios.get(`https://xsurface-test-app.onrender.com/product/${params.id}`)
+      const response = await axios.get(`${server}/product/${params.id}`)
       setProductDetail(response.data.data)
     } catch (error) {
       console.log(error);

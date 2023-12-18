@@ -80,11 +80,12 @@ async function init(){
             
             const avatarUrl = await cloudinaryUpload(req.files);
             products['avatars'] = avatarUrl;
+            products['created_at'] = new Date();
 
             const collection = db.collection('products')
             await collection.insertOne(products)
 
-            return res.json({
+            return res.status(200).json({
                 message:'Product has been created successfully'
             })
         } catch (error) {
