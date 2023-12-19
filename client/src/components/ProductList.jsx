@@ -18,7 +18,7 @@ const ProductList = () => {
 
     try {
       setIsLoading(true)
-      const result = await axios.get(`${server}/products?keyword=${keyword}`)
+      const result = await axios.get(`${server}/product?keyword=${keyword}`)
       setProducts(result.data)
       setIsLoading(false)
     } catch (error) {
