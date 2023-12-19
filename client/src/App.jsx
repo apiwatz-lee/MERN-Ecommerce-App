@@ -8,6 +8,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import ProductCartPage from './pages/ProductCartPage'
 import Homepage from './pages/Homepage'
 import PageNotFoud from './pages/PageNotFoud'
+import LoginPage from './pages/LoginPage'
 
 export const AppContext = createContext(null)
 
@@ -61,6 +62,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path='/' element={<Homepage/>}/>
+              <Route path='/login' element={<LoginPage/>}/>
               <Route path='/product' element={<ProductListPage/>}/>
               <Route path='/product/upload' element={<UploadProductPage/>}/>
               <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
