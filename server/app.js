@@ -22,7 +22,7 @@ async function init(){
     const app = express();
     app.use(cors())
     app.use(bodyParser.json());
-    const port = 4000;
+    const port = process.env.PORT || 4000;
 
     try {
         await client.connect();
@@ -101,7 +101,7 @@ async function init(){
         res.status(404).send('Not found endpoint');
     });
 
-    app.listen(process.env.PORT || port,()=>{
+    app.listen(port,()=>{
         console.log(`Server is running at ${port}`)
     })
 }
