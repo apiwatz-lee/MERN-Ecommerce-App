@@ -18,6 +18,11 @@ const AuthProvider = (props) => {
 
     const server = import.meta.env.VITE_API
 
+    const register = async(data) => {
+        await axios.post(`${server}/auth/register`,data);
+        navigate('/login')
+    }
+
     const login = async(data) => {
         try {
             const result = await axios.post(`${server}/auth/login`,data)
@@ -26,7 +31,7 @@ const AuthProvider = (props) => {
             const userDataFromToken = jwtDecode(token)
             console.log(userDataFromToken)
             setState({...state,user:userDataFromToken})
-            navigate('/')
+            navigate('/product')
         } catch (error) {
             console.log(`Cannot login from client due to ${error}`)
         }
@@ -34,8 +39,13 @@ const AuthProvider = (props) => {
 
     const isAuthenticated = Boolean(localStorage.getItem('token'));
 
+    const logout = () => {
+        localStorage.removeItem('token')
+        setState({...state,user:null})
+    };
+
     return (
-        <AuthContext.Provider value={{state,login,isAuthenticated}}>
+        <AuthContext.Provider value={{state,register,login,isAuthenticated,logout}}>
             {props.children}
         </AuthContext.Provider>
     )

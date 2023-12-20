@@ -3,8 +3,7 @@ import axios from "axios";
 function jwtInterceptor(){
     axios.interceptors.request.use((req)=>{
         const hasToken = Boolean(window.localStorage.getItem("token"))
-        console.log(window.localStorage);
-
+    
         if(hasToken){
             req.headers = {
                 ...req.headers,
