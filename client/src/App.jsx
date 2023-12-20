@@ -9,6 +9,7 @@ import ProductCartPage from './pages/ProductCartPage'
 import Homepage from './pages/Homepage'
 import PageNotFoud from './pages/PageNotFoud'
 import LoginPage from './pages/LoginPage'
+import { AuthProvider } from './context/Authentication'
 
 export const AppContext = createContext(null)
 
@@ -58,18 +59,16 @@ function App() {
         totalQuantity,
         setTotalQuantity,
       }}>
-        <ChakraProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route path='/' element={<Homepage/>}/>
-              <Route path='/login' element={<LoginPage/>}/>
-              <Route path='/product' element={<ProductListPage/>}/>
-              <Route path='/product/upload' element={<UploadProductPage/>}/>
-              <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
-              <Route path='/product/cart' element={<ProductCartPage/>}/>
-              <Route path='/*' element={<PageNotFoud/>}/>
-            </Routes>
-          </BrowserRouter>
+        <ChakraProvider>      
+              <Routes>
+                <Route path='/' element={<Homepage/>}/>
+                <Route path='/login' element={<LoginPage/>}/>
+                <Route path='/product' element={<ProductListPage/>}/>
+                <Route path='/product/upload' element={<UploadProductPage/>}/>
+                <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
+                <Route path='/product/cart' element={<ProductCartPage/>}/>
+                <Route path='/*' element={<PageNotFoud/>}/>
+              </Routes>
         </ChakraProvider>
       </AppContext.Provider>
     </>
