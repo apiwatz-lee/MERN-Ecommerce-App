@@ -59,7 +59,9 @@ function App() {
         totalQuantity,
         setTotalQuantity,
       }}>
-        <ChakraProvider>      
+        <ChakraProvider>   
+          <BrowserRouter>   
+            <AuthProvider>
               <Routes>
                 <Route path='/' element={<Homepage/>}/>
                 <Route path='/login' element={<LoginPage/>}/>
@@ -69,6 +71,8 @@ function App() {
                 <Route path='/product/cart' element={<ProductCartPage/>}/>
                 <Route path='/*' element={<PageNotFoud/>}/>
               </Routes>
+            </AuthProvider>
+          </BrowserRouter>
         </ChakraProvider>
       </AppContext.Provider>
     </>

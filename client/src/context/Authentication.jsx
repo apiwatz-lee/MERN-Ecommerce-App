@@ -22,7 +22,7 @@ const AuthProvider = (props) => {
         try {
             const result = await axios.post(`${server}/auth/login`,data)
             const token = result.data.token;
-            localStorage.getItem('token',token)
+            localStorage.setItem('token',token)
             const userDataFromToken = jwtDecode(token)
             console.log(userDataFromToken)
             setState({...state,user:userDataFromToken})

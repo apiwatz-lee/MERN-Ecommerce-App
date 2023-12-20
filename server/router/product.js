@@ -3,8 +3,10 @@ import { Router } from "express"
 import { db } from "../utils/db.js"
 import { cloudinaryUpload } from "../utils/upload.js";
 import multer from "multer";
+import { protect } from "../middlewares/protect.js";
 
 const productRouter = Router();
+productRouter.use(protect)
 
 const multerUpload = multer({dest: 'public\\files'});
 const avatarUpload = multerUpload.fields([{ name: 'avatar', maxCount: 6}])
