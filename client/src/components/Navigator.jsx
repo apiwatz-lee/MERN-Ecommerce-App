@@ -4,6 +4,8 @@ import { FiShoppingCart } from "react-icons/fi";
 import { useContext } from 'react';
 import { AppContext } from '../App';
 import { jwtDecode } from 'jwt-decode';
+import { useState } from 'react';
+import { useAuth } from '../context/Authentication';
 
 export default function Navigator() {
 
@@ -13,6 +15,7 @@ export default function Navigator() {
     const decodeToken = jwtDecode(getToken)
     const role = decodeToken.role
     let link;
+    const {logout} = useAuth();
  
     if(role === 'admin'){
         const path = [
@@ -56,6 +59,12 @@ export default function Navigator() {
                     <FiShoppingCart className={`text-3xl text-gray-500 hover:text-gray-800 duration-500 cursor-pointer`}/>
                     {cart.length !== 0 && <span className='absolute border bg-[#E04132] text-white rounded-full w-5 h-5 text-center text-[12px] top-[-5px] right-1 flex justify-center items-center'>{cart.length}</span>}
                 </Link>
+                <li className='text-gray-400 flex gap-2'>
+                    <span>
+                        |
+                    </span>
+                    <p className='underline underline-offset-8 cursor-pointer hover:text-gray-700 duration-500' onClick={()=>logout()}>Log out</p>
+                </li>
             </ul>
         </nav>
     )

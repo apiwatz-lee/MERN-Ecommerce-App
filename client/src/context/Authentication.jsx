@@ -41,6 +41,7 @@ const AuthProvider = (props) => {
     const logout = () => {
         localStorage.removeItem('token')
         setState({...state,user:null})
+        navigate('/')
     };
 
     return (
