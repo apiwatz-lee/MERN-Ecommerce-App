@@ -4,7 +4,6 @@ import { useEffect,useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import { useContext } from 'react';
 import { AppContext } from '../App';
-// import "../css/ProductList.css"
 
 const ProductList = () => {
 
@@ -58,7 +57,7 @@ const ProductList = () => {
                 onClick={() => handleProductDetails(item._id)}>
                   <div>
                     <img src={item.avatars[0].url} alt={item.name} className='border h-[200px] rounded-t-2xl object-cover w-[300px]' />
-                    <h1 className='h-10 break-normal truncate w-full font-semibold p-2'>{item.name}</h1>
+                    <h1 className='break-normal truncate w-full font-semibold pt-2 pl-2'>{item.name}</h1>
                     <p className='font-light text-sm text-gray-400 pl-2'>{item.code}</p>
                   </div>
                   <p className='text-right pb-4 pr-4 font-semibold text-[#E04132] text-lg'>{formatNumber(item.price)} ฿</p>
@@ -66,15 +65,6 @@ const ProductList = () => {
             
         );
         })}
-{/* 
-        <div className='card-container'>
-          <img src={products[0]?.avatars[0].url} alt="product" className='card-image' />
-          <div className='description-container'>
-            <h1 className='card-name'>Product name</h1>
-            <p className='card-code'>Code</p>
-            <p className='card-price'>฿1,000</p>
-          </div>
-        </div> */}
 
     </section>
   )

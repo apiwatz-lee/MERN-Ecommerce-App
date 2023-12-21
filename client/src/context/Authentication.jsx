@@ -26,11 +26,9 @@ const AuthProvider = (props) => {
     const login = async(data) => {
         try {
             const result = await axios.post(`${server}/auth/login`,data)
-            console.log(result);
             const token = result.data.token;
             localStorage.setItem('token',token)
             const userDataFromToken = jwtDecode(token)
-            console.log(userDataFromToken)
             setState({...state,user:userDataFromToken})
             navigate('/product')
         } catch (error) {
