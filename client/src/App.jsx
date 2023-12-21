@@ -10,6 +10,7 @@ import Homepage from './pages/Homepage'
 import PageNotFoud from './pages/PageNotFoud'
 import LoginPage from './pages/LoginPage'
 import { useAuth } from './context/Authentication'
+import RegisterPage from './pages/RegisterPage'
 
 
 export const AppContext = createContext(null)
@@ -74,8 +75,9 @@ function App() {
                   </>
                 :
                   <>
-                      <Route path='/' element={<LoginPage/>}/>
-                      <Route path='*' element={<PageNotFoud/>}/>
+                    <Route path='/register' element={<RegisterPage/>}/>
+                    <Route path='/' element={<LoginPage/>}/>
+                    <Route path='*' element={<PageNotFoud/>}/>
                   </> 
                 }
             </Routes>

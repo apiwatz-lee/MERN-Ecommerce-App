@@ -20,7 +20,7 @@ authRouter.post('/register',async(req,res)=>{
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(user.password,salt)
     
-        const collection = db.collection('admin');
+        const collection = db.collection('users');
         await collection.insertOne(user)
     
         return res.json({
@@ -47,7 +47,7 @@ authRouter.post('/login',async(req,res)=>{
         if(user){
             const isUserValidPassword = await bcrypt.compare(req.body.password,user.password)
             if(!isUserValidPassword){
-                return res.status(401).json({message:'user password is not valid'})
+                return res.status(404).json({message:'user password is not valid'})
             }
             if(user && isUserValidPassword){
                 const token = jwt.sign( {id:user._id,firstname:user.firstname,lastname:user.lastname,role:'user'},
@@ -63,7 +63,7 @@ authRouter.post('/login',async(req,res)=>{
         if(admin){
             const isAdminValidPassword = await bcrypt.compare(req.body.password,admin.password)
             if(!isAdminValidPassword){
-                return res.status(401).json({message:'admin password is not valid'})
+                return res.status(404).json({message:'admin password is not valid'})
             }
             if(admin && isAdminValidPassword){
                 const token = jwt.sign( {id:admin._id,firstname:admin.firstname,lastname:admin.lastname,role:'admin'},
