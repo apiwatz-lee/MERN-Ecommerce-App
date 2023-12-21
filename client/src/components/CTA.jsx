@@ -8,7 +8,7 @@ const CTA = () => {
             <p className='text-xl text-white text-center px-5'>You can always find something you want</p>
             <p>- Sophie Kinsella -</p>
             <Link to='/product' className='border p-10 rounded-xl'>
-                <p className='text-white text-center animate-bounce text-4xl sm:text-5xl font-bold hover:text-amber-200 duration-500'>Shop Now</p>
+                <p className='text-white text-center animate-bounce text-4xl sm:text-5xl font-bold hover:text-amber-200 duration-500'>Shop now</p>
             </Link>
         </div>
     </main> 

@@ -1,6 +1,6 @@
 import { useState,createContext } from 'react'
 import './App.css'
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import {Routes,Route} from 'react-router-dom'
 import ProductListPage from './pages/ProductListPage'
 import UploadProductPage from './pages/UploadProductPage'
 import ProductDetailsPage from './pages/ProductDetailsPage'
@@ -67,16 +67,19 @@ function App() {
             <Routes>
               {isAuthenticated ?
                   <>
-                    {/* <Route path='/' element={<Homepage/>}/> */}
-                    <Route path='*' element={<ProductListPage/>}/>
+                    <Route path='/product' element={<ProductListPage/>}/>
                     <Route path='/product/upload' element={<UploadProductPage/>}/>
                     <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
                     <Route path='/product/cart' element={<ProductCartPage/>}/>
                   </>
                 :
                   <>
+                    <Route path='/' element={<Homepage/>}/>
+                    <Route path='/product' element={<ProductListPage/>}/>
+                    <Route path='/product/cart' element={<ProductCartPage/>}/>
+                    <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
                     <Route path='/register' element={<RegisterPage/>}/>
-                    <Route path='/' element={<LoginPage/>}/>
+                    <Route path='/login' element={<LoginPage/>}/>
                     <Route path='*' element={<PageNotFoud/>}/>
                   </> 
                 }

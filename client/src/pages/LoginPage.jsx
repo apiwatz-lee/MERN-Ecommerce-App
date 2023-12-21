@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import { useAuth } from '../context/Authentication'
 import {useNavigate} from 'react-router-dom'
+import Navigator from '../components/Navigator'
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 const LoginPage = () => {
 
@@ -21,13 +23,16 @@ const LoginPage = () => {
     
   return (
     <>
-        <main className='bg-shopping bg-cover w-screen h-screen'>
+        <main className='bg-shopping bg-cover w-screen h-screen font-poppins'>
+            <div className='hidden lg:block absolute top-5 left-5 text-white cursor-pointer' onClick={()=>navigate('/product')}>
+                <FaArrowLeftLong className='text-3xl hover:text-gray-300 duration-300'/>
+            </div>
             <section className='w-full h-full flex flex-col justify-center items-center'>
                 <form onSubmit={handleLogin} className='border w-[270px] sm:w-[400px] h-[600px] rounded-3xl flex flex-col justify-center items-center gap-10 backdrop-opacity-5 bg-gray-950 bg-opacity-90 shadow-2xl'>
                     <h1 className='text-gray-100 text-center text-2xl sm:text-3xl font-bold'>Account Login</h1>
 
                     <div className='flex flex-col gap-3'>
-                        <label className='text-lg sm:text-xl font-semibold w-full text-white mt-5'>Username</label>
+                        <label className='text-lg sm:text-xl font-semibold w-full text-gray-400 mt-5 '>Username</label>
                         <input 
                             type="text" 
                             className='bg-transparent border p-3 w-full rounded-lg outline-none text-white'
@@ -37,7 +42,7 @@ const LoginPage = () => {
                     </div>
 
                     <div className='flex flex-col gap-3'>
-                        <label className='text-lg sm:text-xl font-semibold w-full text-white'>Password</label>
+                        <label className='text-lg sm:text-xl font-semibold w-full text-gray-400'>Password</label>
                         <input 
                             type="password" 
                             className='bg-transparent border p-3 w-full rounded-lg outline-none text-white'

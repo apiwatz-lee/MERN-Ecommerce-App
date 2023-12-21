@@ -30,7 +30,7 @@ const AuthProvider = (props) => {
             isClosable: true,
             position:'top'
           })
-        navigate('/')
+        navigate('/login')
     }
 
     const login = async(data) => {
@@ -66,12 +66,15 @@ const AuthProvider = (props) => {
     const isAuthenticated = Boolean(localStorage.getItem('token'));
 
     const logout = () => {
+        const getToken = localStorage.getItem('token')
+        const decodeToken = jwtDecode(getToken)
+        const name = decodeToken.firstname
         localStorage.removeItem('token')
         setState({...state,user:null})
         navigate('/')
         toast({
             title: 'Logout successfully.',
-            description: `See you around!`,
+            description: `Hey ${name}, See you around!`,
             status: 'success',
             duration: 2000,
             isClosable: true,
