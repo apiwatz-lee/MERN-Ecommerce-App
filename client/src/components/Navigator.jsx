@@ -50,18 +50,18 @@ export default function Navigator() {
             </ul>
 
             <ul className='relative flex justify-center items-center gap-5 p-3'>
-                <Link to ='/product/cart' className={` ${location.pathname === '/product/cart' ? ' bg-gray-100 duration-500 p-3 rounded-full':null}`}>
+                <Link to ='/product/cart' className={` ${location.pathname === '/product/cart' ? ' bg-gray-100 p-3 duration-500 rounded-full':'p-3'}`}>
                     <FiShoppingCart className={`text-3xl text-gray-500 hover:text-gray-800 duration-500 cursor-pointer`}/>
-                    {cart.length !== 0 && <span className='absolute border bg-[#E04132] top-[-5px] left-7 text-white rounded-full w-5 h-5 text-center text-[12px] flex justify-center items-center'>{cart.length}</span>}
+                    {cart.length !== 0 && <span className='absolute border bg-[#E04132] top-[5px] left-[43px] text-white rounded-full w-5 h-5 text-center text-[12px] flex justify-center items-center'>{cart.length}</span>}
                 </Link>
                 <li className='text-gray-400 flex gap-2'>
                     <span>
                         |
                     </span>
                     {isAuthenticated ? 
-                        <p className='underline underline-offset-8 cursor-pointer hover:text-gray-700 duration-500' onClick={()=>logout()}>Log out</p>
+                        <p className='cursor-pointer hover:text-gray-700 duration-500' onClick={()=>logout()}>Log out</p>
                         :
-                        <p className='underline underline-offset-8 cursor-pointer hover:text-gray-700 duration-500' onClick={()=>navigate('/login')}>Log in</p>
+                        <p className='cursor-pointer hover:text-gray-700 duration-500' onClick={()=>navigate('/login')}>Log in</p>
                     }
                 </li>
             </ul>
