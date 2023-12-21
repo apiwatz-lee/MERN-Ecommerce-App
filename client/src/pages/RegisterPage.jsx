@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import { useAuth } from '../context/Authentication'
 import {useNavigate} from 'react-router-dom'
-import PasswordChecklist from "react-password-checklist"
 
 const RegisterPage = () => {
 
@@ -57,65 +56,65 @@ const RegisterPage = () => {
     <>
         <main className='bg-shopping bg-cover w-screen h-screen'>
             <section className='w-full h-full flex flex-col justify-center items-center'>
-                <form onSubmit={handleValidate} className='border p-10 sm:p-10 w-[280px] sm:w-[40vh] rounded-3xl flex flex-col justify-center items-center gap-5 backdrop-opacity-5 bg-gray-950 bg-opacity-90 shadow-2xl'>
+                <form onSubmit={handleValidate} className='border w-[270px] sm:w-[400px] h-[600px] rounded-3xl flex flex-col justify-center items-center backdrop-opacity-5 bg-gray-950 bg-opacity-90 shadow-2xl'>
                     <h1 className='text-gray-100 text-center text-2xl sm:text-3xl font-bold'>Account Register</h1>
 
-                    <div className='flex flex-col gap-3'>
-                        <label className='text-lg sm:text-xl font-semibold sm:w-[30vh] text-white mt-5'>Username</label>
+                    <div className='flex flex-col gap-2'>
+                        <label className='text-lg sm:text-xl font-semibold w-full text-white mt-5'>Username</label>
                         <input 
                             type="text" 
                             placeholder='Enter your username'
-                            className='bg-transparent border p-3 sm:w-[30vh] rounded-lg outline-none text-white placeholder:text-gray-300 placeholder:text-sm'
+                            className='bg-transparent border p-3 w-full rounded-lg outline-none text-white placeholder:text-gray-300 placeholder:text-sm'
                             value={username}
                             onChange={(e)=>setUsername(e.target.value)}
                             />
                         <p className='text-red-500 pl-2'>{errorMessage.username && <span>{errorMessage.username}</span>}</p>
                     </div>
 
-                    <div className='flex flex-col gap-3'>
-                         <label className='text-lg sm:text-xl font-semibold sm:w-[30vh] text-white'>Password</label>
+                    <div className='flex flex-col gap-2'>
+                         <label className='text-lg sm:text-xl font-semibold w-full text-white'>Password</label>
                         <input 
                             type="password" 
                             placeholder='e.g. ToonLogin!3'
-                            className='bg-transparent border p-3 sm:w-[30vh] rounded-lg outline-none text-white placeholder:text-gray-300 placeholder:text-sm'
+                            className='bg-transparent border p-3 w-full rounded-lg outline-none text-white placeholder:text-gray-300 placeholder:text-sm'
                             value={password}
                             onChange={(e)=>setPassword(e.target.value)}
                             />
                         <p className={`text-red-500 pl-2 ${errorMessage.password === 'Password is strong' && 'text-green-500'}`}>{errorMessage.password && <span>{errorMessage.password}</span>}</p>       
                     </div>
 
-                    <div className='flex flex-col gap-3'>
-                        <label className='text-lg sm:text-xl font-semibold sm:w-[30vh] text-white '>Firstname</label>
+                    <div className='flex flex-col gap-2'>
+                        <label className='text-lg sm:text-xl font-semibold w-full text-white '>Firstname</label>
                         <input 
                             type="text" 
                             placeholder='Enter your firstname'
-                            className='bg-transparent border p-3 sm:w-[30vh] rounded-lg outline-none text-white placeholder:text-gray-300 placeholder:text-sm'
+                            className='bg-transparent border p-3 w-full rounded-lg outline-none text-white placeholder:text-gray-300 placeholder:text-sm'
                             value={firstname}
                             onChange={(e)=>setFirstname(e.target.value)}
                             />
                          <p className='text-red-500 pl-2'>{errorMessage.firstname && <span>{errorMessage.firstname}</span>}</p>
                     </div>
 
-                    <div className='flex flex-col gap-3'>
-                        <label className='text-lg sm:text-xl font-semibold sm:w-[30vh] text-white'>Lastname</label>
+                    <div className='flex flex-col gap-2'>
+                        <label className='text-lg sm:text-xl font-semibold w-full text-white'>Lastname</label>
                         <input 
                             type="text" 
                             placeholder='Enter your lastname'
-                            className='bg-transparent border p-3 sm:w-[30vh] rounded-lg outline-none text-white placeholder:text-gray-300 placeholder:text-sm'
+                            className='bg-transparent border p-3 w-full rounded-lg outline-none text-white placeholder:text-gray-300 placeholder:text-sm'
                             value={lastname}
                             onChange={(e)=>setLastname(e.target.value)}
                             />
                          <p className='text-red-500 pl-2'>{errorMessage.lastname && <span>{errorMessage.lastname}</span>}</p>
                     </div>
 
-                    <div className='flex flex-col sm:flex-row justify-center items-center sm:justify-end gap-1 w-[30vh]'>
+                    <div className='flex flex-col sm:flex-row justify-center items-center gap-1 w-full mt-3'>
                         <p className='text-white'>Already have an account ? </p>
                         <span className='text-blue-600 underline cursor-pointer' onClick={()=>navigate('/')}>Log in</span>
                     </div>
 
                     <button 
                         type="submit"
-                        className='text-white border p-5 w-44 rounded-full font-bold text-xl mt-5 hover:bg-gray-600 hover:border-gray-600 duration-300'
+                        className='text-white border p-2 w-44 rounded-full font-bold text-xl mt-5 hover:bg-gray-600 hover:border-gray-600 duration-300'
                         >Sign Up</button>
 
                 </form>

@@ -43,7 +43,7 @@ const AuthProvider = (props) => {
             setState({...state,user:userDataFromToken})
             navigate('/product')
             toast({
-                title: 'Login successfully.',
+                title: 'Login successfully',
                 description: `Hello ${userDataFromToken.firstname}, Have a good day!`,
                 status: 'success',
                 duration: 2000,
@@ -69,6 +69,14 @@ const AuthProvider = (props) => {
         localStorage.removeItem('token')
         setState({...state,user:null})
         navigate('/')
+        toast({
+            title: 'Logout successfully.',
+            description: `See you around!`,
+            status: 'success',
+            duration: 2000,
+            isClosable: true,
+            position:'top'
+          })
     };
 
     return (

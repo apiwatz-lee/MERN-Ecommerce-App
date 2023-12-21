@@ -23,37 +23,37 @@ const LoginPage = () => {
     <>
         <main className='bg-shopping bg-cover w-screen h-screen'>
             <section className='w-full h-full flex flex-col justify-center items-center'>
-                <form onSubmit={handleLogin} className='border p-10 sm:p-10 w-[270px] sm:w-[40vh] rounded-3xl flex flex-col justify-center items-center gap-10 backdrop-opacity-5 bg-gray-950 bg-opacity-90 shadow-2xl'>
+                <form onSubmit={handleLogin} className='border w-[270px] sm:w-[400px] h-[600px] rounded-3xl flex flex-col justify-center items-center gap-10 backdrop-opacity-5 bg-gray-950 bg-opacity-90 shadow-2xl'>
                     <h1 className='text-gray-100 text-center text-2xl sm:text-3xl font-bold'>Account Login</h1>
 
                     <div className='flex flex-col gap-3'>
-                        <label className='text-lg sm:text-xl font-semibold sm:w-[30vh] text-white mt-5'>Username</label>
+                        <label className='text-lg sm:text-xl font-semibold w-full text-white mt-5'>Username</label>
                         <input 
                             type="text" 
-                            className='bg-transparent border p-3 sm:w-[30vh] rounded-lg outline-none text-white'
+                            className='bg-transparent border p-3 w-full rounded-lg outline-none text-white'
                             value={username}
                             onChange={(e)=>setUsername(e.target.value)}
                             />
                     </div>
 
                     <div className='flex flex-col gap-3'>
-                        <label className='text-lg sm:text-xl font-semibold sm:w-[30vh] text-white'>Password</label>
+                        <label className='text-lg sm:text-xl font-semibold w-full text-white'>Password</label>
                         <input 
                             type="password" 
-                            className='bg-transparent border p-3 sm:w-[30vh] rounded-lg outline-none text-white'
+                            className='bg-transparent border p-3 w-full rounded-lg outline-none text-white'
                             value={password}
                             onChange={(e)=>setPassword(e.target.value)}
                             />
                     </div>
 
-                    <div className='flex flex-col sm:flex-row justify-center items-center sm:justify-end sm:w-[30vh] gap-1'>
+                    <div className='flex flex-col sm:flex-row justify-center items-center w-full gap-1'>
                         <p className='text-white'>Dont have an account ?</p>
                         <p className='text-blue-500 underline cursor-pointer' onClick={()=>navigate('/register')}>Register</p>
                     </div>
 
                     <button 
                         type="submit"
-                        className='text-white border p-5 w-44 rounded-full font-bold text-xl mt-5 hover:bg-gray-600 hover:border-gray-600 duration-300'
+                        className='text-white border p-2 w-44 rounded-full font-bold text-xl mt-5 hover:bg-gray-600 hover:border-gray-600 duration-300'
                         >Log in</button>
 
                 </form>
