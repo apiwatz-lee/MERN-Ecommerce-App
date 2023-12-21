@@ -53,15 +53,15 @@ const RegisterPage = () => {
     <>
         <main className='bg-shopping bg-cover w-screen h-screen font-poppins'>
             <section className='w-full h-full flex flex-col justify-center items-center'>
-                <form onSubmit={handleValidate} className='border w-[270px] sm:w-[400px] h-[650px] rounded-3xl flex flex-col gap-1 justify-center items-center backdrop-opacity-5 bg-gray-950 bg-opacity-90 shadow-2xl'>
-                    <h1 className='text-gray-100 text-center text-2xl sm:text-3xl font-bold'>Account Register</h1>
+                <form onSubmit={handleValidate} className='p-5 w-[280px] sm:w-[400px] h-[650px] rounded-3xl flex flex-col gap-1 justify-center items-center backdrop-opacity-5 bg-gray-950 bg-opacity-90 shadow-2xl'>
+                    <h1 className='text-gray-100 text-center text-2xl sm:text-3xl font-bold mb-5'>Account Register</h1>
 
                     <div className='flex flex-col gap-2'>
-                        <label className='text-lg text-center font-semibold w-full text-gray-400 mt-5'>Username</label>
+                        <label className='text-lg text-center font-semibold w-full text-gray-400'>Username</label>
                         <input 
                             type="text" 
                             placeholder='Enter your username'
-                            className='bg-transparent border p-3 w-full rounded-lg outline-none text-white placeholder:text-gray-700 placeholder:text-xs placeholder:text-center'
+                            className='bg-transparent border p-3 w-[250px] rounded-lg outline-none text-white placeholder:text-gray-700 placeholder:text-xs placeholder:text-center'
                             value={username}
                             onChange={(e)=>setUsername(e.target.value)}
                             />
@@ -73,7 +73,7 @@ const RegisterPage = () => {
                         <input 
                             type="password" 
                             placeholder='e.g. ToonLogin!3'
-                            className='bg-transparent border p-3 w-full rounded-lg outline-none text-white placeholder:text-gray-700 placeholder:text-xs placeholder:text-center'
+                            className='bg-transparent border p-3 w-[250px] rounded-lg outline-none text-white placeholder:text-gray-700 placeholder:text-xs placeholder:text-center'
                             value={password}
                             onChange={(e)=>setPassword(e.target.value)}
                             />
@@ -85,7 +85,7 @@ const RegisterPage = () => {
                         <input 
                             type="text" 
                             placeholder='Enter your firstname'
-                            className='bg-transparent border p-3 w-full rounded-lg outline-none text-white placeholder:text-gray-700 placeholder:text-xs placeholder:text-center'
+                            className='bg-transparent border p-3 w-[250px] rounded-lg outline-none text-white placeholder:text-gray-700 placeholder:text-xs placeholder:text-center'
                             value={firstname}
                             onChange={(e)=>setFirstname(e.target.value)}
                             />
@@ -97,7 +97,7 @@ const RegisterPage = () => {
                         <input 
                             type="text" 
                             placeholder='Enter your lastname'
-                            className='bg-transparent border p-3 w-full rounded-lg outline-none text-white placeholder:text-gray-700 placeholder:text-xs placeholder:text-center'
+                            className='bg-transparent border p-3 w-[250px] rounded-lg outline-none text-white placeholder:text-gray-700 placeholder:text-xs placeholder:text-center'
                             value={lastname}
                             onChange={(e)=>setLastname(e.target.value)}
                             />
