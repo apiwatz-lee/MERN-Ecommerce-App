@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-import axios from 'axios'
 import { useAuth } from '../context/Authentication'
 
 const LoginPage = () => {
@@ -22,27 +21,59 @@ const LoginPage = () => {
     <>
         <main className='bg-shopping bg-cover w-screen h-screen'>
             <section className='w-full h-full flex flex-col justify-center items-center'>
-                <form onSubmit={handleLogin} className='p-10 sm:p-10 sm:w-[70vh] sm:h-[80vh] rounded-3xl flex flex-col justify-center items-center gap-5 backdrop-blur-xl shadow-2xl'>
-                    <h1 className='text-white text-center text-xl sm:text-5xl font-bold'>Login Page</h1>
+                <form onSubmit={handleLogin} className='border p-10 sm:p-10 sm:w-[40vh] rounded-3xl flex flex-col justify-center items-center gap-10 backdrop-blur-xl shadow-2xl'>
+                    {/* <h1 className='text-gray-100 text-center text-2xl sm:text-4xl font-bold'>Account Login</h1>
 
-                    <label className='text-lg sm:text-xl font-semibold sm:w-96 text-white mt-5'>Username</label>
-                    <input 
-                        type="text" 
-                        className='bg-transparent border p-3 sm:w-96 rounded-lg outline-none text-white'
-                        value={username}
-                        onChange={(e)=>setUsername(e.target.value)}
-                        />
+                    <div className='flex flex-col gap-3'>
+                        <label className='text-lg sm:text-xl font-semibold sm:w-[30vh] text-white mt-5'>Username</label>
+                        <input 
+                            type="text" 
+                            className='bg-transparent border p-3 sm:w-[30vh] rounded-lg outline-none text-white'
+                            value={username}
+                            onChange={(e)=>setUsername(e.target.value)}
+                            />
+                    </div>
 
-                    <label className='text-lg sm:text-xl font-semibold sm:w-96 text-white'>Password</label>
-                    <input 
-                        type="password" 
-                        className='bg-transparent border p-3 sm:w-96 rounded-lg outline-none text-white'
-                        value={password}
-                        onChange={(e)=>setPassword(e.target.value)}
-                        />
+                    <div className='flex flex-col gap-3'>
+                        <label className='text-lg sm:text-xl font-semibold sm:w-[30vh] text-white'>Password</label>
+                        <input 
+                            type="password" 
+                            className='bg-transparent border p-3 sm:w-[30vh] rounded-lg outline-none text-white'
+                            value={password}
+                            onChange={(e)=>setPassword(e.target.value)}
+                            />
+                    </div>
 
                     <button 
-                        className='text-white border p-5 w-44 rounded-full font-bold text-xl mt-5'
+                        type="submit"
+                        className='text-white border p-5 w-44 rounded-full font-bold text-xl mt-5 hover:bg-gray-600 hover:border-gray-600 duration-300'
+                        >Log in</button> */}
+
+                    <h1 className='text-gray-100 text-center text-2xl sm:text-4xl font-bold'>Account Register</h1>
+
+                    <div className='flex flex-col gap-3'>
+                        <label className='text-lg sm:text-xl font-semibold sm:w-[30vh] text-white mt-5'>Username</label>
+                        <input 
+                            type="text" 
+                            className='bg-transparent border p-3 sm:w-[30vh] rounded-lg outline-none text-white'
+                            value={username}
+                            onChange={(e)=>setUsername(e.target.value)}
+                            />
+                    </div>
+
+                    <div className='flex flex-col gap-3'>
+                        <label className='text-lg sm:text-xl font-semibold sm:w-[30vh] text-white'>Password</label>
+                        <input 
+                            type="password" 
+                            className='bg-transparent border p-3 sm:w-[30vh] rounded-lg outline-none text-white'
+                            value={password}
+                            onChange={(e)=>setPassword(e.target.value)}
+                            />
+                    </div>
+
+                    <button 
+                        type="submit"
+                        className='text-white border p-5 w-44 rounded-full font-bold text-xl mt-5 hover:bg-gray-600 hover:border-gray-600 duration-300'
                         >Log in</button>
                 </form>
             </section>

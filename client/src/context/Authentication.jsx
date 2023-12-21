@@ -2,6 +2,7 @@ import React,{createContext,useContext,useState} from 'react'
 import axios from 'axios'
 import {jwtDecode} from 'jwt-decode'
 import {useNavigate} from 'react-router-dom'
+import { useToast } from '@chakra-ui/react';
 
 const AuthContext = createContext();
 
@@ -15,6 +16,7 @@ const AuthProvider = (props) => {
     })
 
     const navigate = useNavigate();
+    const toast = useToast()
 
     const server = import.meta.env.VITE_API
 
@@ -24,6 +26,7 @@ const AuthProvider = (props) => {
     }
 
     const login = async(data) => {
+    
         try {
             const result = await axios.post(`${server}/auth/login`,data)
             const token = result.data.token;
@@ -31,8 +34,24 @@ const AuthProvider = (props) => {
             const userDataFromToken = jwtDecode(token)
             setState({...state,user:userDataFromToken})
             navigate('/product')
+            toast({
+                title: 'Login successfully.',
+                description: `Hello ${userDataFromToken.firstname}, Have a good day!`,
+                status: 'success',
+                duration: 2000,
+                isClosable: true,
+                position:'top'
+              })
         } catch (error) {
             console.log(`Cannot login from client due to ${error}`)
+            toast({
+                title: 'Login failed.',
+                description: `Please check your username and password`,
+                status: 'error',
+                duration: 2000,
+                isClosable: true,
+                position:'top'
+                })          
         }
     }
 
