@@ -22,6 +22,14 @@ const AuthProvider = (props) => {
 
     const register = async(data) => {
         await axios.post(`${server}/auth/register`,data);
+        toast({
+            title: 'Register successfully.',
+            description: `We have created your account successfully!`,
+            status: 'success',
+            duration: 2000,
+            isClosable: true,
+            position:'top'
+          })
         navigate('/')
     }
 
