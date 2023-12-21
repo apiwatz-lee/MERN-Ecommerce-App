@@ -24,7 +24,7 @@ const Dropzone = () => {
         maxFiles:6,
         multiple:true,
         accept:{'image/png': ['.png'],
-                'image/jpeg': ['.jpg', '.jpeg'] }, 
+                'image/jpeg': ['.jpg', '.jpeg'], }
     })
 
     const fileRejectionItems = fileRejections.map(({ file, errors  }) => { 

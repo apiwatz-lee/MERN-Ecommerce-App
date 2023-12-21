@@ -1,6 +1,6 @@
 import { useState,createContext } from 'react'
 import './App.css'
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import {Routes,Route} from 'react-router-dom'
 import ProductListPage from './pages/ProductListPage'
 import UploadProductPage from './pages/UploadProductPage'
 import ProductDetailsPage from './pages/ProductDetailsPage'
@@ -8,6 +8,10 @@ import { ChakraProvider } from '@chakra-ui/react'
 import ProductCartPage from './pages/ProductCartPage'
 import Homepage from './pages/Homepage'
 import PageNotFoud from './pages/PageNotFoud'
+import LoginPage from './pages/LoginPage'
+import { useAuth } from './context/Authentication'
+import RegisterPage from './pages/RegisterPage'
+
 
 export const AppContext = createContext(null)
 
@@ -27,6 +31,8 @@ function App() {
   const [totalAmount,setTotalAmount] = useState(0)
   const [totalQuantity,setTotalQuantity] = useState(0)
 
+  const {isAuthenticated} = useAuth();
+  
   return (
     <>
       <AppContext.Provider value={{
@@ -57,17 +63,27 @@ function App() {
         totalQuantity,
         setTotalQuantity,
       }}>
-        <ChakraProvider>
-          <BrowserRouter>
+        <ChakraProvider>   
             <Routes>
-              <Route path='/' element={<Homepage/>}/>
-              <Route path='/product' element={<ProductListPage/>}/>
-              <Route path='/product/upload' element={<UploadProductPage/>}/>
-              <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
-              <Route path='/product/cart' element={<ProductCartPage/>}/>
-              <Route path='/*' element={<PageNotFoud/>}/>
+              {isAuthenticated ?
+                  <>
+                    <Route path='/product' element={<ProductListPage/>}/>
+                    <Route path='/product/upload' element={<UploadProductPage/>}/>
+                    <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
+                    <Route path='/product/cart' element={<ProductCartPage/>}/>
+                  </>
+                :
+                  <>
+                    <Route path='/' element={<Homepage/>}/>
+                    <Route path='/product' element={<ProductListPage/>}/>
+                    <Route path='/product/cart' element={<ProductCartPage/>}/>
+                    <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
+                    <Route path='/register' element={<RegisterPage/>}/>
+                    <Route path='/login' element={<LoginPage/>}/>
+                    <Route path='*' element={<PageNotFoud/>}/>
+                  </> 
+                }
             </Routes>
-          </BrowserRouter>
         </ChakraProvider>
       </AppContext.Provider>
     </>
