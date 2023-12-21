@@ -7,49 +7,78 @@ const authRouter = Router();
 
 
 authRouter.post('/register',async(req,res)=>{
-    const user = {
-        username: req.body.username,
-        password: req.body.password,
-        firstname:req.body.firstname,
-        lastname:req.body.lastname,
-        created_at:new Date()
+
+    try {
+        const user = {
+            username: req.body.username,
+            password: req.body.password,
+            firstname:req.body.firstname,
+            lastname:req.body.lastname,
+            created_at:new Date()
+        }
+    
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password,salt)
+    
+        const collection = db.collection('admin');
+        await collection.insertOne(user)
+    
+        return res.json({
+            message:'user has been created successfully',
+            data:user
+        })
+    } catch (error) {
+        return res.status(400).json({error:`Register weng wrong :${error}`})
     }
-
-    const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(user.password,salt)
-
-    const collection = db.collection('users');
-    await collection.insertOne(user)
-
-    return res.json({
-        message:'user has been created successfully',
-        data:user
-    })
+  
 })
 
 authRouter.post('/login',async(req,res)=>{
 
-    const username = {username:req.body.username}
-    const user = await db.collection("users").findOne(username)
-
-    if(!user){
-        return res.status(404).json({message:'user not found'})
+    try {
+        const username = {username:req.body.username}
+        const user = await db.collection('users').findOne(username)
+        const admin = await db.collection('admin').findOne(username)
+    
+        if(!user && !admin){
+            return res.status(404).json({message:'account not found'})
+        }
+    
+        if(user){
+            const isUserValidPassword = await bcrypt.compare(req.body.password,user.password)
+            if(!isUserValidPassword){
+                return res.status(401).json({message:'user password is not valid'})
+            }
+            if(user && isUserValidPassword){
+                const token = jwt.sign( {id:user._id,firstname:user.firstname,lastname:user.lastname,role:'user'},
+                process.env.SECRET_KEY,
+                {expiresIn:'900000',});
+                return res.json({
+                    message:'User login successfully',
+                    token
+                })
+            }
+        }
+    
+        if(admin){
+            const isAdminValidPassword = await bcrypt.compare(req.body.password,admin.password)
+            if(!isAdminValidPassword){
+                return res.status(401).json({message:'admin password is not valid'})
+            }
+            if(admin && isAdminValidPassword){
+                const token = jwt.sign( {id:admin._id,firstname:admin.firstname,lastname:admin.lastname,role:'admin'},
+                process.env.SECRET_KEY,
+                {expiresIn:'900000',});
+                return res.json({
+                    message:'Admin login successfully',
+                    token
+                })
+                }
+            }
+    } catch (error) {
+        return res.status(400).json({error:`Login weng wrong :${error}`})
     }
 
-    const isValidPassword = await bcrypt.compare(req.body.password,user.password)
-
-    if(!isValidPassword){
-        return res.status(401).json({message:'password is not valid'})
-    }
-
-    const token = jwt.sign( {id:user._id,firstname:user.firstname,lastname:user.lastname},
-                            process.env.SECRET_KEY,
-                            {expiresIn:'900000',});
-
-    return res.json({
-        message:'Login successfully',
-        token
-    })
 });
 
 export default authRouter

@@ -67,7 +67,7 @@ function App() {
               {isAuthenticated ?
                   <>
                     {/* <Route path='/' element={<Homepage/>}/> */}
-                    <Route path='/product' element={<ProductListPage/>}/>
+                    <Route path='*' element={<ProductListPage/>}/>
                     <Route path='/product/upload' element={<UploadProductPage/>}/>
                     <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
                     <Route path='/product/cart' element={<ProductCartPage/>}/>
