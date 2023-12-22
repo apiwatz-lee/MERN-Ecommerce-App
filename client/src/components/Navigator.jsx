@@ -6,6 +6,9 @@ import { AppContext } from '../App';
 import { useAuth } from '../context/Authentication';
 import { jwtDecode } from 'jwt-decode';
 import { FaBars,FaTimes } from "react-icons/fa";
+import { CiShoppingTag } from "react-icons/ci";
+import { IoCloudUploadOutline } from "react-icons/io5";
+import { CiLogout,CiLogin} from "react-icons/ci";
 
 export default function Navigator() {
 
@@ -31,33 +34,44 @@ export default function Navigator() {
         name = decodeToken.firstname
         if(role === 'admin'){
             anchor = [
-                {id:1,name:'Product list',path:'/product'},
-                {id:2,name:'Upload Products',path:'/product/upload'}]
+                {id:1,name:'Product list',path:'/product',icon: <CiShoppingTag/>},
+                {id:2,name:'Upload Products',path:'/product/upload',icon:<IoCloudUploadOutline />}]
         }else if(role === 'user'){
-            anchor = [{id:1,name:'Product list',path:'/product'}]
+            anchor = [{id:1,name:'Product list',path:'/product',icon:<CiShoppingTag/>}]
         }
         
     }else if(!isAuthenticated){
          anchor = [
-            {id:1,name:'Product list',path:'/product'},
+            {id:1,name:'Product list',path:'/product',icon: <CiShoppingTag/>},
         ]
     }
 
-    const mobileMenu = anchor.map((item)=> <Link to={item.path} className='w-[30vh] text-center p-2 text-white font-bold hover:bg-[#86413b] duration-300 rounded-lg'>{item.name}</Link>)
+    const mobileMenu = anchor.map((item)=> 
+        <Link to={item.path} className='flex items-center w-[200px] gap-5 justify-between p-2 text-white font-bold hover:bg-[#86413b] duration-300 rounded-lg' key={item.id}> 
+            <div className='text-2xl'>{item.icon}</div>
+             <p className='w-full text-start'>{item.name}</p>
+        </Link>
+        
+        )
   
    
     return (
         <>
-            <aside className={`sm:hidden fixed z-10 ${isOpen ? 'top-0':'top-[-100%]'} h-auto w-full bg-[#84312a] duration-300`}>
-                <FaTimes className={`${isOpen ? 'top-5':'top-[-100%]'} text-2xl text-white fixed left-5 duration-1000`} onClick={toggleMenu}/>
+            <aside className={`sm:hidden fixed z-10 ${isOpen ? 'top-0':'top-[-100%]'} h-auto w-full bg-[#82312a] duration-300`}>
+                <FaTimes className={`${isOpen ? 'top-5':'top-[-100%]'} text-2xl text-white fixed left-5 hover:text-gray-200 duration-1000`} onClick={toggleMenu}/>
                 <ul className='flex flex-col justify-center items-center gap-5 p-20'>
-                    {mobileMenu}
-                    <Link to='/product/cart' className='mt-5 w-[30vh] p-2 text-white flex justify-center items-center text-3xl hover:bg-[#86413b] duration-300 rounded-lg'>
-                        <div className='relative'>
-                            <FiShoppingCart/>
-                            {cart.length !== 0 && <span className='absolute border bg-[#E04132] top-[-22px] left-[14px] text-white rounded-full w-5 h-5 text-center text-[12px] flex justify-center items-center'>{cart.length}</span>}
+                    {isAuthenticated ? 
+                        <div className='flex items-center w-[200px] gap-5 justify-between p-2 text-white font-bold hover:bg-[#86413b] duration-300 rounded-lg' onClick={()=>logout()}>
+                            <div className='text-2xl'><CiLogout/></div>
+                            <p className='w-full text-start'>Log out</p>
                         </div>
-                    </Link>
+                        :
+                        <div className='flex items-center w-[200px] gap-5  justify-between p-2 text-white font-bold hover:bg-[#86413b] duration-300 rounded-lg' onClick={()=>navigate('/login')}>
+                            <div className='text-2xl'><CiLogin /></div>
+                            <p className='w-full text-start'>Log in</p>
+                        </div>
+                    }
+                    {mobileMenu}
                 </ul>
             </aside>
 
@@ -83,16 +97,22 @@ export default function Navigator() {
                     </Link>
 
                     <div className='sm:hidden' onClick={toggleMenu}>
-                        <FaBars className='text-2xl text-gray-700'/>
+                        <FaBars className='text-2xl text-gray-700 hover:text-gray-500 duration-300'/>
                     </div>
 
                     <li className='text-gray-400 flex gap-3 justify-center items-center cursor-pointer'>
                         <p> {isAuthenticated && `Hi ${name}`} </p>
                         <span> | </span>
+                        <Link to='/product/cart' className={`sm:hidden block text-3xl text-gray-500 ${location.pathname === '/product/cart' ? ' bg-gray-100 p-3 duration-500 rounded-full':'p-3'}`}>
+                            <div className='relative'>
+                                <FiShoppingCart/>
+                                {cart.length !== 0 && <span className='absolute border bg-[#E04132] top-[-19px] left-[16px] text-white rounded-full w-5 h-5 text-center text-[12px] flex justify-center items-center'>{cart.length}</span>}
+                            </div>
+                        </Link>
                         {isAuthenticated ? 
-                            <p className='cursor-pointer hover:text-gray-700 duration-500' onClick={()=>logout()}>Log out</p>
+                            <p className='hidden sm:block cursor-pointer hover:text-gray-700 duration-500' onClick={()=>logout()}>Log out</p>
                             :
-                            <p className='cursor-pointer hover:text-gray-700 duration-500' onClick={()=>navigate('/login')}>Log in</p>
+                            <p className='hidden sm:block cursor-pointer hover:text-gray-700 duration-500' onClick={()=>navigate('/login')}>Log in</p>
                         }
                     </li>
                 </ul>

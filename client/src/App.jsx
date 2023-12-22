@@ -67,6 +67,7 @@ function App() {
             <Routes>
               {isAuthenticated ?
                   <>
+                    <Route path='/' element={<Homepage/>}/>
                     <Route path='/product' element={<ProductListPage/>}/>
                     <Route path='/product/upload' element={<UploadProductPage/>}/>
                     <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
