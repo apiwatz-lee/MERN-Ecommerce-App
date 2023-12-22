@@ -15,7 +15,9 @@ const ProductListPage = () => {
         setCode,
         setPrice,
         setDescription,
-        setAvatars} = useContext(AppContext)
+        setAvatars,
+        setIsUpdatedCompleted,
+        isUpdatedCompleted} = useContext(AppContext)
 
   const toast = useToast()
 
@@ -31,8 +33,20 @@ const ProductListPage = () => {
           position:'top'
         })
     }
+
+    if(isUpdatedCompleted){
+      toast({
+        title: 'Product Updated.',
+        description: "Product have been updated successfully",
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+        position:'top'
+      })
+    }
     
       setIsCompleted(false)
+      setIsUpdatedCompleted(false)
       setName('')
       setCode('')
       setPrice('')
@@ -43,7 +57,7 @@ const ProductListPage = () => {
   
 
   return (
-    <>
+    <div className='relative'>
       <Navigator/>
       <main className='font-poppins w-screen h-screen flex flex-col items-center gap-5'>
           <h1 className='text-3xl font-medium w-[90vw] pt-5 text-center sm:text-left'>Product list</h1>
@@ -51,7 +65,7 @@ const ProductListPage = () => {
           <ProductList/>
           <Loading/>
       </main>
-    </>
+    </div>
   )
 }
 

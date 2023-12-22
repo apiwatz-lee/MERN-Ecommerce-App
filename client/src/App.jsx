@@ -25,7 +25,9 @@ function App() {
   const [isCancel,setIsCancel] = useState(false)
   const [isLoading,setIsLoading] = useState(false)
   const [isSubmit,setIsSubmit] = useState(false)
+  const [isUpdate,setIsUpdate] = useState(false)
   const [isCompleted,setIsCompleted] = useState(false)
+  const [isUpdatedCompleted,setIsUpdatedCompleted] = useState(false)
   const [keyword,setKeyword] = useState('')
   const [cart,setCart] = useState([])
   const [totalAmount,setTotalAmount] = useState(0)
@@ -52,8 +54,12 @@ function App() {
         setIsLoading,
         isSubmit,
         setIsSubmit,
+        isUpdate,
+        setIsUpdate,
         isCompleted,
         setIsCompleted,
+        isUpdatedCompleted,
+        setIsUpdatedCompleted,
         keyword,
         setKeyword,
         cart,
@@ -67,8 +73,10 @@ function App() {
             <Routes>
               {isAuthenticated ?
                   <>
+                    <Route path='/' element={<Homepage/>}/>
                     <Route path='/product' element={<ProductListPage/>}/>
-                    <Route path='/product/upload' element={<UploadProductPage/>}/>
+                    <Route path='/product/upload/' element={<UploadProductPage/>}/>
+                    <Route path='/product/upload/:id' element={<UploadProductPage/>}/>
                     <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
                     <Route path='/product/cart' element={<ProductCartPage/>}/>
                   </>

@@ -27,7 +27,7 @@ const LoginPage = () => {
                 <FaArrowLeftLong className='text-3xl hover:text-gray-300 duration-300'/>
             </div>
             <section className='w-full h-full flex flex-col justify-center items-center'>
-                <form onSubmit={handleLogin} className='p-10 w-[280px] sm:w-[400px] h-[600px] rounded-3xl flex flex-col justify-center items-center gap-10 backdrop-opacity-5 bg-[#280e0c] bg-opacity-90 shadow-2xl'>
+                <form onSubmit={handleLogin} className='p-10 w-[280px] sm:w-[400px] h-[600px] rounded-3xl flex flex-col justify-center items-center gap-10 backdrop-opacity-5 bg-gray-900 bg-opacity-90 shadow-2xl'>
                     <h1 className='text-gray-100 text-center text-2xl sm:text-3xl font-bold'>Account Login</h1>
 
                     <div className='flex flex-col gap-3'>
@@ -57,8 +57,9 @@ const LoginPage = () => {
 
                     <button 
                         type="submit"
-                        className='text-white border p-2 w-44 rounded-full font-bold text-xl mt-5 hover:bg-[#E04132] hover:border-gray-600 duration-300'
-                        >Log in</button>
+                        className='text-white border p-2 w-44 rounded-full font-bold text-xl mt-5 hover:bg-[#86413b] hover:border-[#86413b] duration-300'
+                    >Log in
+                    </button>
 
                 </form>
             </section>
