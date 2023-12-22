@@ -11,33 +11,42 @@ import {
   } from "@chakra-ui/react";
   import { AppContext } from '../App';
 
-const ProductConfirmation = ({handleSubmit}) => {
+const ProductConfirmation = ({handleSubmit,handleUpdate,params}) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const {isSubmit,setIsSubmit} = useContext(AppContext)
+    const {isSubmit,setIsSubmit,isUpdate,setIsUpdate} = useContext(AppContext)
     const cancelRef = React.useRef()
+    let message;
 
     useEffect(()=>{
 
-        if(isSubmit){
+        if(isSubmit || isUpdate){
             onOpen();
         }else{
             onClose();
         }
 
 
-    },[isSubmit])
+    },[isSubmit,isUpdate])
 
-    const message = {
-        header:'Upload Product Confirmation',
-        description:'Are you sure you want to proceed ?',
-        cancel:'Cancel',
-        corect:'Confirm!'
-    }
+     if(isSubmit){
+        message = {
+            header:'Upload Product Confirmation',
+            description:'Are you sure you want to proceed ?',
+            cancel:'Cancel',
+            corect:'Confirm!'
+     }
+    }else {
+        message = {
+            header:'Update Product Confirmation',
+            description:'Are you sure you want to proceed ?',
+            cancel:'Cancel',
+            corect:'Confirm!'
+    }}
 
     const handleCancel = () => {
         onClose();
-        setIsSubmit(false)
+        params ? setIsUpdate(false) : setIsSubmit(false)
       }
 
     return (
@@ -62,7 +71,7 @@ const ProductConfirmation = ({handleSubmit}) => {
                             <button className='p-2 rounded-xl bg-gray-200 text-black outline-none' ref={cancelRef} onClick={handleCancel}>
                                 {message.cancel}
                             </button>
-                            <button className='p-2 rounded-xl bg-orange-700 text-white' onClick={handleSubmit} ml={3}>
+                            <button className='p-2 rounded-xl bg-orange-700 text-white' onClick={params? handleUpdate:handleSubmit} ml={3}>
                                 {message.corect}
                             </button>
                         </AlertDialogFooter>

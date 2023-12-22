@@ -15,7 +15,9 @@ const ProductListPage = () => {
         setCode,
         setPrice,
         setDescription,
-        setAvatars} = useContext(AppContext)
+        setAvatars,
+        setIsUpdatedCompleted,
+        isUpdatedCompleted} = useContext(AppContext)
 
   const toast = useToast()
 
@@ -31,8 +33,20 @@ const ProductListPage = () => {
           position:'top'
         })
     }
+
+    if(isUpdatedCompleted){
+      toast({
+        title: 'Product Updated.',
+        description: "Product have been updated successfully",
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+        position:'top'
+      })
+    }
     
       setIsCompleted(false)
+      setIsUpdatedCompleted(false)
       setName('')
       setCode('')
       setPrice('')

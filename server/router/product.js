@@ -70,4 +70,29 @@ productRouter.post('/upload', avatarUpload, async(req,res)=>{
     }
 })
 
+productRouter.put('/upload/:id', async(req,res)=>{
+
+    try {
+        const productId = new ObjectId(req.params.id)
+        const updateProducts = {
+            ...req.body,
+            updated_at:new Date(),
+            }
+
+        console.log(updateProducts);
+
+        const collection = db.collection('products')
+        await collection.updateOne(
+            {_id:productId},
+            {$set:updateProducts}
+        )
+
+        return res.status(200).json({
+            message:'Product has been updated successfully'
+        })
+    } catch (error) {
+        return res.status(404).json({data:error})
+    }
+})
+
 export default productRouter;

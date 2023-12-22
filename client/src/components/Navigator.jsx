@@ -47,7 +47,7 @@ export default function Navigator() {
     }
 
     const mobileMenu = anchor.map((item)=> 
-        <Link to={item.path} className='flex items-center w-[200px] gap-5 justify-between p-2 text-white font-bold hover:bg-[#86413b] duration-300 rounded-lg' key={item.id}> 
+        <Link to={item.path} className='flex items-center w-[200px] gap-5 justify-between p-2 text-white font-bold hover:bg-gray-600 duration-300 rounded-lg' key={item.id}> 
             <div className='text-2xl'>{item.icon}</div>
              <p className='w-full text-start'>{item.name}</p>
         </Link>
@@ -57,21 +57,21 @@ export default function Navigator() {
    
     return (
         <>
-            <aside className={`sm:hidden fixed z-10 ${isOpen ? 'top-0':'top-[-100%]'} h-auto w-full bg-[#82312a] duration-300`}>
-                <FaTimes className={`${isOpen ? 'top-5':'top-[-100%]'} text-2xl text-white fixed left-5 hover:text-gray-200 duration-1000`} onClick={toggleMenu}/>
+            <aside className={`sm:hidden fixed z-10 ${isOpen ? 'top-0':'top-[-100%]'} h-auto w-full bg-gray-800 duration-300`}>
+                <FaTimes className={`${isOpen ? 'top-5':'top-[-100%]'} text-2xl text-white fixed left-5 hover:text-gray-200 duration-1000 cursor-pointer`} onClick={toggleMenu}/>
                 <ul className='flex flex-col justify-center items-center gap-5 p-20'>
+                    {mobileMenu}
                     {isAuthenticated ? 
-                        <div className='flex items-center w-[200px] gap-5 justify-between p-2 text-white font-bold hover:bg-[#86413b] duration-300 rounded-lg' onClick={()=>logout()}>
+                        <div className='flex items-center w-[200px] gap-5 justify-between p-2 text-white font-bold hover:bg-gray-600 duration-300 rounded-lg' onClick={()=>logout()}>
                             <div className='text-2xl'><CiLogout/></div>
                             <p className='w-full text-start'>Log out</p>
                         </div>
                         :
-                        <div className='flex items-center w-[200px] gap-5  justify-between p-2 text-white font-bold hover:bg-[#86413b] duration-300 rounded-lg' onClick={()=>navigate('/login')}>
+                        <div className='flex items-center w-[200px] gap-5  justify-between p-2 text-white font-bold hover:bg-gray-600 duration-300 rounded-lg' onClick={()=>navigate('/login')}>
                             <div className='text-2xl'><CiLogin /></div>
                             <p className='w-full text-start'>Log in</p>
                         </div>
                     }
-                    {mobileMenu}
                 </ul>
             </aside>
 
@@ -89,18 +89,18 @@ export default function Navigator() {
                     })}
                 </ul>
 
-                <ul className='relative flex justify-between sm:justify-center items-center gap-5 p-3 w-full sm:w-auto'>
+                <ul className='relative flex justify-between sm:justify-center items-center p-3 w-full sm:w-auto'>
 
-                    <Link to ='/product/cart' className={`hidden sm:block ${location.pathname === '/product/cart' ? ' bg-gray-100 p-3 duration-500 rounded-full':'p-3'}`}>
+                    <Link to ='/product/cart' className={`hidden sm:flex justify-center items-center ${location.pathname === '/product/cart' ? ' bg-gray-100 p-3 duration-500 rounded-full':'p-3'}`}>
                         <FiShoppingCart className={`text-3xl text-gray-500 hover:text-gray-800 duration-500 cursor-pointer`}/>
                         {cart.length !== 0 && <span className='absolute border bg-[#E04132] top-[5px] left-[43px] text-white rounded-full w-5 h-5 text-center text-[12px] flex justify-center items-center'>{cart.length}</span>}
                     </Link>
 
                     <div className='sm:hidden' onClick={toggleMenu}>
-                        <FaBars className='text-2xl text-gray-700 hover:text-gray-500 duration-300'/>
+                        <FaBars className='text-2xl text-gray-700 hover:text-gray-500 duration-300 cursor-pointer'/>
                     </div>
 
-                    <li className='text-gray-400 flex gap-3 justify-center items-center cursor-pointer'>
+                    <li className='text-gray-400 flex justify-center items-center gap-1 cursor-pointer'>
                         <p> {isAuthenticated && `Hi ${name}`} </p>
                         <span> | </span>
                         <Link to='/product/cart' className={`sm:hidden block text-3xl text-gray-500 ${location.pathname === '/product/cart' ? ' bg-gray-100 p-3 duration-500 rounded-full':'p-3'}`}>

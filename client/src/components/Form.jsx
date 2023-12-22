@@ -8,7 +8,7 @@ import {useNavigate} from 'react-router-dom'
 import { useToast } from '@chakra-ui/react';
 import Textarea from './Textarea'
 
-const Form = () => {
+const Form = ({params}) => {
 
     const {name,
           setName,
@@ -19,6 +19,7 @@ const Form = () => {
           description,
           setDescription,
           avatars,
+          setIsUpdate,
           setIsSubmit} = useContext(AppContext)
           
     const navigate = useNavigate();
@@ -61,7 +62,7 @@ const Form = () => {
             isClosable: true,
             position:'top'
           })
-        }else if(price.charAt(0) == 0){
+        }else if(String(price).charAt(0) == 0){
           toast({
             title: 'Product price.',
             description: "Price cannot start with 0",
@@ -79,6 +80,8 @@ const Form = () => {
             isClosable: true,
             position:'top'
         })
+        }else if(params){
+          setIsUpdate(true)
         }else{
           setIsSubmit(true)
         }

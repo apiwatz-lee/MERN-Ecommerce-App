@@ -54,7 +54,7 @@ const RegisterPage = () => {
     <>
         <main className='bg-shopping bg-cover w-screen h-screen font-poppins'>
             <section className='w-full h-full flex flex-col justify-center items-center'>
-                <form onSubmit={handleValidate} className='p-10 w-[280px] sm:w-[400px] h-[650px] rounded-3xl flex flex-col gap-1 justify-center items-center backdrop-opacity-5 bg-[#280e0c] bg-opacity-90 shadow-2xl'>
+                <form onSubmit={handleValidate} className='p-10 w-[280px] sm:w-[400px] h-[650px] rounded-3xl flex flex-col gap-1 justify-center items-center backdrop-opacity-5 bg-gray-900 bg-opacity-90 shadow-2xl'>
                     <h1 className='text-gray-100 text-center text-2xl sm:text-3xl font-bold mb-5'>Account Register</h1>
 
                     <RegisterInput 
