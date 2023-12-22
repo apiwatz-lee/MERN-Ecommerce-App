@@ -14,11 +14,14 @@ export default function Navigator() {
     const navigate = useNavigate();
 
     let anchor;
+    let name;
+   
 
     if(isAuthenticated){
         const getToken = localStorage.getItem('token') 
         const decodeToken = jwtDecode(getToken) 
         const role = decodeToken.role
+        name = decodeToken.firstname
         if(role === 'admin'){
             anchor = [
                 {id:1,name:'Product list',path:'/product'},
@@ -55,6 +58,9 @@ export default function Navigator() {
                     {cart.length !== 0 && <span className='absolute border bg-[#E04132] top-[5px] left-[43px] text-white rounded-full w-5 h-5 text-center text-[12px] flex justify-center items-center'>{cart.length}</span>}
                 </Link>
                 <li className='text-gray-400 flex gap-2'>
+                    <p>
+                        {isAuthenticated && `Hi ${name}`}
+                    </p>
                     <span>
                         |
                     </span>

@@ -57,8 +57,9 @@ const LoginPage = () => {
 
                     <button 
                         type="submit"
-                        className='text-white border p-2 w-44 rounded-full font-bold text-xl mt-5 hover:bg-[#E04132] hover:border-gray-600 duration-300'
-                        >Log in</button>
+                        className='text-white border p-2 w-44 rounded-full font-bold text-xl mt-5 hover:bg-[#86413b] hover:border-gray-600 duration-300'
+                    >Log in
+                    </button>
 
                 </form>
             </section>
