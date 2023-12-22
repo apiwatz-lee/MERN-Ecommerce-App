@@ -93,13 +93,13 @@ const RegisterPage = () => {
                     
 
                     <div className='flex flex-col sm:flex-row justify-center items-center gap-1 w-full mt-3'>
-                        <p className='text-gray-400 text-sm'>Already have an account ? </p>
+                        <p className='text-white text-sm'>Already have an account ? </p>
                         <span className='text-blue-600 underline cursor-pointer text-sm' onClick={()=>navigate('/login')}>Log in</span>
                     </div>
 
                     <button 
                         type="submit"
-                        className='text-white border p-2 w-44 rounded-full font-bold text-xl mt-5 hover:bg-[#86413b] hover:border-gray-600 duration-300'
+                        className='text-white border p-2 w-44 rounded-full font-bold text-xl mt-5 hover:bg-[#86413b] hover:border-[#86413b] duration-300'
                         >Sign Up</button>
                 </form>
             </section>
