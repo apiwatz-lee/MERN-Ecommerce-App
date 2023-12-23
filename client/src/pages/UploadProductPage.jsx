@@ -23,8 +23,10 @@ const UploadProductPage = () => {
         setIsLoading,
         setIsSubmit,
         setIsUpdate,
-        setIsCompleted,
+        setIsUploadCompleted,
+        setIsDelete,
         setIsUpdatedCompleted,
+        setIsDeleteCompleted
       } = useContext(AppContext)
 
   const server = import.meta.env.VITE_API
@@ -35,7 +37,7 @@ const UploadProductPage = () => {
     e.preventDefault();
     setIsSubmit(false)
     setIsLoading(true)
-    setIsCompleted(false)
+    setIsUploadCompleted(false)
     const formData = new FormData();
     formData.append('name',name);
     formData.append('code',code);
@@ -51,7 +53,7 @@ const UploadProductPage = () => {
           headers: {'Content-Type': 'multipart/form-data'},})
           setIsLoading(false)
           navigate('/product');
-          setIsCompleted(true)
+          setIsUploadCompleted(true)
       } catch (error) {
           console.log(error)
       }
@@ -81,14 +83,30 @@ const UploadProductPage = () => {
 
   const getProductById = async() => {
     try {
-      const response = await axios.get(`${server}/product/${params.id}`)
-      setAvatars([...response.data.data[0].avatars])
-      setName(response.data.data[0].name)
-      setPrice(response.data.data[0].price)
-      setCode(response.data.data[0].code)
-      setDescription(response.data.data[0].description)
+      if(params.id){
+        const response = await axios.get(`${server}/product/${params.id}`)
+        setAvatars([...response.data.data[0].avatars])
+        setName(response.data.data[0].name)
+        setPrice(response.data.data[0].price)
+        setCode(response.data.data[0].code)
+        setDescription(response.data.data[0].description)
+      }
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  const handleDelete = async(e) => {
+    e.preventDefault();
+    try {
+      setIsDelete(false)
+      setIsLoading(true)
+      await axios.delete(`${server}/product/${params.id}`)
+      setIsDeleteCompleted(true)
+      setIsLoading(false)
+      navigate('/product')
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -107,7 +125,7 @@ const UploadProductPage = () => {
           <ProductConfirmation
             handleSubmit={handleSubmit}
             handleUpdate={handleUpdate}
-            params={params}
+            handleDelete={handleDelete}
           />
           <Loading/>
         </section>

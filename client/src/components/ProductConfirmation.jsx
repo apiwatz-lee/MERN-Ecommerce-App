@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect,useContext } from 'react'
+import { useEffect,useContext,useState } from 'react'
 import { useDisclosure } from "@chakra-ui/react";
 import {
     AlertDialog,
@@ -11,43 +11,54 @@ import {
   } from "@chakra-ui/react";
   import { AppContext } from '../App';
 
-const ProductConfirmation = ({handleSubmit,handleUpdate,params}) => {
+const ProductConfirmation = ({handleSubmit,handleUpdate,handleDelete}) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const {isSubmit,setIsSubmit,isUpdate,setIsUpdate} = useContext(AppContext)
+    const {isSubmit,setIsSubmit,isUpdate,setIsUpdate,isDelete,setIsDelete} = useContext(AppContext)
     const cancelRef = React.useRef()
-    let message;
+    const [message,setMessage] = useState({})
 
-    useEffect(()=>{
-
-        if(isSubmit || isUpdate){
-            onOpen();
+    useEffect(()=>{ 
+        if(isSubmit){
+            onOpen()
+            setMessage({
+                header:'Upload Product Confirmation',
+                description:'Are you sure you want to proceed ?',
+                cancel:'Cancel',
+                corect:'Confirm!'
+            })
+        }else if(isUpdate){
+            onOpen()
+            setMessage({
+                header:'Update Product Confirmation',
+                description:'Are you sure you want to proceed ?',
+                cancel:'Cancel',
+                corect:'Confirm!'
+            })
+        }else if(isDelete){
+            onOpen()
+            setMessage({
+                header:'Delete Product Confirmation',
+                description:'Are you sure you want to proceed ?',
+                cancel:'Cancel',
+                corect:'Confirm!'
+            })
         }else{
-            onClose();
+            onClose()
         }
-
-
-    },[isSubmit,isUpdate])
-
-     if(isSubmit){
-        message = {
-            header:'Upload Product Confirmation',
-            description:'Are you sure you want to proceed ?',
-            cancel:'Cancel',
-            corect:'Confirm!'
-     }
-    }else {
-        message = {
-            header:'Update Product Confirmation',
-            description:'Are you sure you want to proceed ?',
-            cancel:'Cancel',
-            corect:'Confirm!'
-    }}
-
+    },[isSubmit,isUpdate,isDelete])
+    
     const handleCancel = () => {
-        onClose();
-        params ? setIsUpdate(false) : setIsSubmit(false)
+        const closeAndReset = () => {
+            onClose();
+            setIsSubmit(false);
+            setIsUpdate(false);
+            setIsDelete(false);
+        };
+    
+        closeAndReset();
       }
+
 
     return (
         <>
@@ -68,10 +79,10 @@ const ProductConfirmation = ({handleSubmit,handleUpdate,params}) => {
                         </AlertDialogBody>
 
                         <AlertDialogFooter className={`flex gap-5`}>
-                            <button className='p-2 rounded-xl bg-gray-200 text-black outline-none' ref={cancelRef} onClick={handleCancel}>
+                            <button className='p-2 rounded-xl bg-gray-200 text-black outline-none' type='button' ref={cancelRef} onClick={handleCancel}>
                                 {message.cancel}
                             </button>
-                            <button className='p-2 rounded-xl bg-orange-700 text-white' onClick={params? handleUpdate:handleSubmit} ml={3}>
+                            <button className='p-2 rounded-xl bg-orange-700 text-white' type='button' onClick={isUpdate? handleUpdate :isSubmit? handleSubmit:isDelete ? handleDelete:null} ml={3}>
                                 {message.corect}
                             </button>
                         </AlertDialogFooter>

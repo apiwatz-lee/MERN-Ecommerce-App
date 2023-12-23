@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { AppContext } from '../App';
 import { useAuth } from '../context/Authentication';
 import { jwtDecode } from 'jwt-decode';
-import { MdDelete,MdEdit } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
 
 const ProductList = () => {
 
@@ -59,11 +59,7 @@ const ProductList = () => {
     navigate(`/product/upload/${id}`)
   }
   
-  const handleDelete = (id) => {
-    console.log('delete',id);
-  }
 
- 
   return (
     <section className='pb-10 pt-5 grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 2xl:gap-x-5 2xl-y-7 2xl:w-[1500px] grid-rows-3 gap-x-3 gap-y-5 xl:gap-x-5 xl:gap-y-7 justify-items-center'>
 
@@ -77,10 +73,9 @@ const ProductList = () => {
                   <div className='relative'>
                     <button 
                       onClick={()=>handleEdit(item._id)}
-                      className='z-20 absolute right-8 top-1 text-gray-200 bg-gray-600 rounded-full p-1 cursor-pointer hover:scale-105 duration-300'><MdEdit/></button>
-                     <button 
-                      onClick={()=>handleDelete(item._id)}
-                      className='z-20 absolute right-1 top-1 text-gray-200 bg-gray-600 rounded-full p-1 cursor-pointer hover:scale-105 duration-300'><MdDelete/></button>
+                      className='z-20 absolute right-1 top-1 text-gray-200 bg-gray-600 rounded-full p-1 cursor-pointer hover:scale-110 duration-300'>
+                        <MdEdit/>
+                    </button>
                     <img src={item.avatars[0].url} alt={item.name} className='border h-[200px] rounded-t-2xl object-cover w-[300px]' />
                     <h1 className='break-normal truncate w-full font-semibold pt-2 pl-2'>{item.name}</h1>
                     <p className='font-light text-sm text-gray-400 pl-2'>{item.code}</p>

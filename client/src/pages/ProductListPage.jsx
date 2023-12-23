@@ -5,25 +5,26 @@ import { AppContext } from '../App';
 import SearchBar from '../components/SearchBar';
 import Navigator from '../components/Navigator';
 import Loading from '../components/Loading';
+import ProductConfirmation from '../components/ProductConfirmation';
 
 const ProductListPage = () => {
 
   const {
-        isCompleted,
-        setIsCompleted,
+        isUploadCompleted,
+        setIsUploadCompleted,
         setName,
         setCode,
         setPrice,
         setDescription,
         setAvatars,
         setIsUpdatedCompleted,
-        isUpdatedCompleted} = useContext(AppContext)
+        isUpdatedCompleted,isDeleteCompleted,setIsDeleteCompleted} = useContext(AppContext)
 
   const toast = useToast()
 
   useEffect(()=>{
 
-    if(isCompleted){
+    if(isUploadCompleted){
         toast({
           title: 'Product Uplaoded.',
           description: "Product have been created successfully",
@@ -44,9 +45,21 @@ const ProductListPage = () => {
         position:'top'
       })
     }
+
+    if(isDeleteCompleted){
+      toast({
+        title: 'Product Deleted.',
+        description: "Product have been deleted successfully",
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+        position:'top'
+      })
+    }
     
-      setIsCompleted(false)
+      setIsUploadCompleted(false)
       setIsUpdatedCompleted(false)
+      setIsDeleteCompleted(false)
       setName('')
       setCode('')
       setPrice('')

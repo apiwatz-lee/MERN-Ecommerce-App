@@ -20,7 +20,7 @@ const Form = ({params}) => {
           setDescription,
           avatars,
           setIsUpdate,
-          setIsSubmit} = useContext(AppContext)
+          setIsSubmit,isDelete,setIsDelete} = useContext(AppContext)
           
     const navigate = useNavigate();
     const toast = useToast()
@@ -80,12 +80,14 @@ const Form = ({params}) => {
             isClosable: true,
             position:'top'
         })
-        }else if(params){
+        }else if(params.id){
           setIsUpdate(true)
         }else{
           setIsSubmit(true)
         }
       }
+
+     
 
     return (
         <>
@@ -127,14 +129,23 @@ const Form = ({params}) => {
             <Button 
                   className='border p-3 rounded-full w-28 sm:w-56 bg-white text-[#E04132] hover:bg-gray-200 hover:text-black duration-300' 
                   type='reset' 
-                  title='ยกเลิก' 
+                  title='Cancel' 
                   onClick={()=>navigate('/product')}/>
             <Button 
                   className='border p-3 rounded-full w-28 sm:w-56 text-white bg-[#E04132] hover:bg-orange-700 duration-300' 
                   type='button' 
-                  title='ยืนยัน' 
+                  title='Confirm' 
                   onClick={handleValidate}/>
-          </div>   
+          </div>
+
+            {params.id &&     
+                        <Button 
+                          type='button'
+                          onClick={()=>setIsDelete(true)}
+                          className='border bg-red-800 text-white h-14 text-xl font-semibold rounded-xl mb-10 hover:bg-red-600 duration-300'
+                          title = 'Delete' />
+            }
+         
 
           </form>
         </>

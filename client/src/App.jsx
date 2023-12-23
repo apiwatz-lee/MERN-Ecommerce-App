@@ -26,8 +26,10 @@ function App() {
   const [isLoading,setIsLoading] = useState(false)
   const [isSubmit,setIsSubmit] = useState(false)
   const [isUpdate,setIsUpdate] = useState(false)
-  const [isCompleted,setIsCompleted] = useState(false)
+  const [isUploadCompleted,setIsUploadCompleted] = useState(false)
   const [isUpdatedCompleted,setIsUpdatedCompleted] = useState(false)
+  const [isDeleteCompleted,setIsDeleteCompleted] = useState(false)
+  const [isDelete,setIsDelete] = useState(false)
   const [keyword,setKeyword] = useState('')
   const [cart,setCart] = useState([])
   const [totalAmount,setTotalAmount] = useState(0)
@@ -56,10 +58,14 @@ function App() {
         setIsSubmit,
         isUpdate,
         setIsUpdate,
-        isCompleted,
-        setIsCompleted,
+        isUploadCompleted,
+        setIsUploadCompleted,
         isUpdatedCompleted,
         setIsUpdatedCompleted,
+        isDelete,
+        setIsDelete,
+        isDeleteCompleted,
+        setIsDeleteCompleted,
         keyword,
         setKeyword,
         cart,

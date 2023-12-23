@@ -79,8 +79,6 @@ productRouter.put('/upload/:id', async(req,res)=>{
             updated_at:new Date(),
             }
 
-        console.log(updateProducts);
-
         const collection = db.collection('products')
         await collection.updateOne(
             {_id:productId},
@@ -89,6 +87,22 @@ productRouter.put('/upload/:id', async(req,res)=>{
 
         return res.status(200).json({
             message:'Product has been updated successfully'
+        })
+    } catch (error) {
+        return res.status(404).json({data:error})
+    }
+})
+
+productRouter.delete('/:id', async(req,res)=>{
+
+    try {
+        const productId = new ObjectId(req.params.id)
+  
+        const collection = db.collection('products')
+        await collection.deleteOne({_id:productId})
+
+        return res.status(200).json({
+            message:'Product has been deleted successfully'
         })
     } catch (error) {
         return res.status(404).json({data:error})
