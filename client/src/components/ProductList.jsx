@@ -52,7 +52,6 @@ const ProductList = () => {
   if(isAuthenticated){
     const token = localStorage.getItem('token')
     role = jwtDecode(token).role
-    
   }
 
   const handleEdit = (id) => {
@@ -67,16 +66,16 @@ const ProductList = () => {
             return ( 
               role === 'admin' ?
               <section 
-                className='w-[230px] h-[350px] flex flex-col justify-between rounded-2xl shadow-xl cursor-pointer duration-300' 
+                className='w-[230px] h-[350px] flex flex-col justify-between rounded-2xl shadow-xl duration-300' 
                 key={item._id} 
                 >
                   <div className='relative'>
                     <button 
                       onClick={()=>handleEdit(item._id)}
-                      className='z-20 absolute right-1 top-1 text-gray-200 bg-gray-600 rounded-full p-1 cursor-pointer hover:scale-110 duration-300'>
+                      className='absolute right-2 top-2 text-gray-200 bg-gray-600 rounded-full p-1 cursor-pointer hover:scale-110 duration-300'>
                         <MdEdit/>
                     </button>
-                    <img src={item.avatars[0].url} alt={item.name} className='border h-[200px] rounded-t-2xl object-cover w-[300px]' />
+                    <img src={item.avatars[0].url} alt={item.name} className='border h-[200px] rounded-t-2xl object-cover w-[300px] cursor-pointer' onClick={() => handleProductDetails(item._id)}/>
                     <h1 className='break-normal truncate w-full font-semibold pt-2 pl-2'>{item.name}</h1>
                     <p className='font-light text-sm text-gray-400 pl-2'>{item.code}</p>
                   </div>
