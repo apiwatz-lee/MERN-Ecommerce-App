@@ -3,6 +3,7 @@ import axios from 'axios'
 import {jwtDecode} from 'jwt-decode'
 import {useNavigate} from 'react-router-dom'
 import { useToast } from '@chakra-ui/react';
+import { AppContext } from '../App';
 
 const AuthContext = createContext();
 
@@ -14,6 +15,7 @@ const AuthProvider = (props) => {
         error:null,
         user:null,
     })
+
 
     const navigate = useNavigate();
     const toast = useToast()

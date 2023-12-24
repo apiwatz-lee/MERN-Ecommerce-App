@@ -3,11 +3,13 @@ import { useContext } from 'react';
 import { AppContext } from '../App';
 import { useToast } from '@chakra-ui/react';
 import {useNavigate} from 'react-router-dom'
+import { useAuth } from '../context/Authentication';
 
-const ProductInfo = ({productDetail,handlePreview,preview}) => {
+const ProductInfo = ({productDetail,handlePreview,preview,role}) => {
 
   const {cart,setCart} = useContext(AppContext)
   const toast = useToast()
+  const {isAuthenticated} = useAuth()
   const navigate = useNavigate()
 
   const handleAddToCart = () => {
@@ -44,6 +46,17 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   };
 
+  const handleAlert = () => {
+    toast({
+      title: 'Sign in',
+      description: "Please log in before adding to cart.",
+      status: 'error',
+      duration: 3000,
+      isClosable: true,
+      position:'top'
+    })
+  }
+
   return (
     <>
         <div className='xl:w-[50%] flex flex-col-reverse xl:flex-col justify-center gap-5 sm:gap-12'>
@@ -55,7 +68,7 @@ const ProductInfo = ({productDetail,handlePreview,preview}) => {
             <p className='text-gray-800'>{productDetail[0]?.description}</p>
             <div className='w-full pb-10 xl:pb-0 mt-2 flex justify-center items-center gap-5 py-5'>
               <button 
-                onClick={()=>handleAddToCart()}
+                onClick={isAuthenticated ? ()=>handleAddToCart() : ()=>handleAlert()}
                 className='border p-4 rounded-xl w-52 text-white bg-[#E04132] text-lg sm:text-2xl font-bold hover:bg-orange-700 duration-300'> 
                 Add to cart
               </button>

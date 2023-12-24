@@ -13,7 +13,7 @@ import { CiLogout,CiLogin} from "react-icons/ci";
 export default function Navigator() {
 
     const location = useLocation();
-    const {cart} = useContext(AppContext)
+    const {cart,setCart} = useContext(AppContext)
     const {logout,isAuthenticated} = useAuth();
     const navigate = useNavigate();
 
@@ -53,6 +53,12 @@ export default function Navigator() {
         </Link>
         
         )
+
+    const handleLogout = () => {
+        console.log('logout');
+        setCart([])
+        logout()
+    }
   
    
     return (
@@ -62,7 +68,7 @@ export default function Navigator() {
                 <ul className='flex flex-col justify-center items-center gap-5 p-20'>
                     {mobileMenu}
                     {isAuthenticated ? 
-                        <div className='flex items-center w-[200px] gap-5 justify-between p-2 text-white font-bold hover:bg-gray-600 duration-300 rounded-lg' onClick={()=>logout()}>
+                        <div className='flex items-center w-[200px] gap-5 justify-between p-2 text-white font-bold hover:bg-gray-600 duration-300 rounded-lg' onClick={()=>handleLogout()}>
                             <div className='text-2xl'><CiLogout/></div>
                             <p className='w-full text-start'>Log out</p>
                         </div>
@@ -110,7 +116,7 @@ export default function Navigator() {
                             </div>
                         </Link>
                         {isAuthenticated ? 
-                            <p className='hidden sm:block cursor-pointer hover:text-gray-700 duration-500' onClick={()=>logout()}>Log out</p>
+                            <p className='hidden sm:block cursor-pointer hover:text-gray-700 duration-500' onClick={()=>handleLogout()}>Log out</p>
                             :
                             <p className='hidden sm:block cursor-pointer hover:text-gray-700 duration-500' onClick={()=>navigate('/login')}>Log in</p>
                         }

@@ -4,12 +4,14 @@ import axios from 'axios'
 import PreviewImage from '../components/PreviewImage'
 import ProductInfo from '../components/ProductInfo'
 import Navigator from '../components/Navigator'
+import { useAuth } from '../context/Authentication'
 
 const ProductDetails = () => {
 
   const [productDetail,setProductDetail] = useState([])
   const [preview,setPreview] = useState([])
   const params = useParams();
+  const {isAuthenticated} = useAuth();
   const server = import.meta.env.VITE_API
   
   const getProductById = async() => {
