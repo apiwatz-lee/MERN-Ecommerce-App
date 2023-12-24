@@ -107,7 +107,7 @@ export default function Navigator() {
                     </div>
 
                     <li className='text-gray-400 flex justify-center items-center gap-1 cursor-pointer'>
-                        <p> {isAuthenticated ? `Hi ${name}` : `Hi there`} </p>
+                        <p> {isAuthenticated ? `Hi ${name}` : `Hello Guest`} </p>
                         <span> | </span>
                         <Link to='/product/cart' className={`sm:hidden block text-3xl text-gray-500 ${location.pathname === '/product/cart' ? ' bg-gray-100 p-3 duration-500 rounded-full':'p-3'}`}>
                             <div className='relative'>
@@ -118,7 +118,7 @@ export default function Navigator() {
                         {isAuthenticated ? 
                             <p className='hidden sm:block cursor-pointer hover:text-gray-700 duration-500' onClick={()=>handleLogout()}>Log out</p>
                             :
-                            <p className='hidden sm:block cursor-pointer text-orange-500 font-medium hover:text-[#E04132] duration-500' onClick={()=>navigate('/login')}>Log in</p>
+                            <p className='hidden sm:block cursor-pointer text-orange-500 font-semibold hover:text-[#E04132] duration-500' onClick={()=>navigate('/login')}>Log in</p>
                         }
                     </li>
                 </ul>
