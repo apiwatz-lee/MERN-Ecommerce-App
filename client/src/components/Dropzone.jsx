@@ -60,7 +60,7 @@ const Dropzone = () => {
               title: 'Image Type.',
               description: "Product images only accept JPG or PNG formats",
               status: 'error',
-              duration: 3000,
+              duration: 2000,
               isClosable: true,
               position:'top'
             })
@@ -71,7 +71,7 @@ const Dropzone = () => {
             title: 'Image Type.',
             description: "Product images can drag up to 6 images",
             status: 'error',
-            duration: 3000,
+            duration: 2000,
             isClosable: true,
             position:'top'
           })

@@ -24,7 +24,7 @@ const ProductInfo = ({productDetail,handlePreview,preview,role}) => {
         title: 'Already in cart',
         description: `The quantity of ${productDetail[0]?.name} has been added to ${findProduct.quantity} in the cart successfully`,
         status: 'success',
-        duration: 3000,
+        duration: 2000,
         isClosable: true,
         position:'top'
       })
@@ -34,7 +34,7 @@ const ProductInfo = ({productDetail,handlePreview,preview,role}) => {
         title: 'Add to the cart',
         description: `${productDetail[0]?.name} is added to the cart successfully`,
         status: 'success',
-        duration: 3000,
+        duration: 2000,
         isClosable: true,
         position:'top'
       }) 
@@ -49,9 +49,9 @@ const ProductInfo = ({productDetail,handlePreview,preview,role}) => {
   const handleAlert = () => {
     toast({
       title: 'Sign in',
-      description: "Please log in before adding to cart.",
+      description: "Please log in before adding to the cart.",
       status: 'error',
-      duration: 3000,
+      duration: 2000,
       isClosable: true,
       position:'top'
     })

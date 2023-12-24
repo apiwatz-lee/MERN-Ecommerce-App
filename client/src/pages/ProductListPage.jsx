@@ -5,7 +5,6 @@ import { AppContext } from '../App';
 import SearchBar from '../components/SearchBar';
 import Navigator from '../components/Navigator';
 import Loading from '../components/Loading';
-import ProductConfirmation from '../components/ProductConfirmation';
 
 const ProductListPage = () => {
 
@@ -29,7 +28,7 @@ const ProductListPage = () => {
           title: 'Product Uplaoded.',
           description: "Product have been created successfully",
           status: 'success',
-          duration: 5000,
+          duration: 2000,
           isClosable: true,
           position:'top'
         })
@@ -40,7 +39,7 @@ const ProductListPage = () => {
         title: 'Product Updated.',
         description: "Product have been updated successfully",
         status: 'success',
-        duration: 5000,
+        duration: 2000,
         isClosable: true,
         position:'top'
       })
@@ -51,7 +50,7 @@ const ProductListPage = () => {
         title: 'Product Deleted.',
         description: "Product have been deleted successfully",
         status: 'success',
-        duration: 5000,
+        duration: 2000,
         isClosable: true,
         position:'top'
       })

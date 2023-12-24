@@ -55,7 +55,7 @@ const AuthProvider = (props) => {
             console.log(`Cannot login from client due to ${error}`)
             toast({
                 title: 'Login failed.',
-                description: `Please check your username and password`,
+                description: `Invalid user ID or password`,
                 status: 'error',
                 duration: 2000,
                 isClosable: true,
