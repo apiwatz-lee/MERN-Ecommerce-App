@@ -13,7 +13,7 @@ import { CiLogout,CiLogin} from "react-icons/ci";
 export default function Navigator() {
 
     const location = useLocation();
-    const {cart,setCart} = useContext(AppContext)
+    const {cart,setCart,setKeyword} = useContext(AppContext)
     const {logout,isAuthenticated} = useAuth();
     const navigate = useNavigate();
 
@@ -55,8 +55,8 @@ export default function Navigator() {
         )
 
     const handleLogout = () => {
-        console.log('logout');
         setCart([])
+        setKeyword('')
         logout()
     }
   
