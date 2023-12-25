@@ -19,7 +19,7 @@ const Pagination = () => {
         <>
           {totalPage > 1 &&      
           
-            <div className='flex w-96 justify-center items-center gap-10 pb-10'>
+            <div className='flex flex-col sm:flex-row w-96 justify-center items-center gap-10 pb-10'>
             
               <button 
               className='p-3 rounded-full w-32 bg-[#E04132] hover:bg-orange-700 duration-300 text-white font-bold'
