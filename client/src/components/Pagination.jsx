@@ -15,26 +15,31 @@ const Pagination = () => {
       }
     
       return (
-        <div className='flex w-96 justify-center items-center gap-10 pb-10'>
+        <>
+          {totalPage > 1 &&      
+          
+            <div className='flex w-96 justify-center items-center gap-10 pb-10'>
             
-            <button 
-            className='p-3 rounded-full w-32 bg-[#E04132] hover:bg-orange-700 duration-300 text-white font-bold'
-            type='button'
-            onClick={handlePrevious}
-            >Previous
-            </button>
-            
+              <button 
+              className='p-3 rounded-full w-32 bg-[#E04132] hover:bg-orange-700 duration-300 text-white font-bold'
+              type='button'
+              onClick={handlePrevious}
+              >Previous
+              </button>
+              
 
-            <p> {page} of {totalPage}</p>
+              <p> {page} of {totalPage}</p>
+          
+              <button 
+              className='p-3 rounded-full w-32 bg-[#E04132] hover:bg-orange-700 duration-300 text-white font-bold'
+              type='button'
+              onClick={handleNext}
+              >Next
+              </button>
         
-            <button 
-            className='p-3 rounded-full w-32 bg-[#E04132] hover:bg-orange-700 duration-300 text-white font-bold'
-            type='button'
-            onClick={handleNext}
-            >Next
-            </button>
-        
-        </div>
+            </div>}
+        </>
+   
     )
 }
 

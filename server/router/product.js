@@ -15,7 +15,7 @@ productRouter.get("/", async(req,res)=>{
         
     try {
         const query = {}
-        const PAGE_SIZE = 6;
+        const PAGE_SIZE = 12;
         const page = req.query.page
         const skip = PAGE_SIZE * (page - 1)
         const keyword = req.query.keyword
@@ -30,7 +30,7 @@ productRouter.get("/", async(req,res)=>{
         const products =  await collection
         .find(query)
         .skip(skip)
-        .limit(6)
+        .limit(12)
         .toArray()
 
         const count = await collection.countDocuments(query)
