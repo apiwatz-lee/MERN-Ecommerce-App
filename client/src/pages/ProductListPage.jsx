@@ -5,6 +5,7 @@ import { AppContext } from '../App';
 import SearchBar from '../components/SearchBar';
 import Navigator from '../components/Navigator';
 import Loading from '../components/Loading';
+import Pagination from '../components/Pagination';
 
 const ProductListPage = () => {
 
@@ -17,7 +18,9 @@ const ProductListPage = () => {
         setDescription,
         setAvatars,
         setIsUpdatedCompleted,
-        isUpdatedCompleted,isDeleteCompleted,setIsDeleteCompleted} = useContext(AppContext)
+        isUpdatedCompleted,
+        isDeleteCompleted,
+        setIsDeleteCompleted} = useContext(AppContext)
 
   const toast = useToast()
 
@@ -66,7 +69,7 @@ const ProductListPage = () => {
       setAvatars([])
       
   },[])
-  
+
 
   return (
     <div className='relative'>
@@ -76,6 +79,7 @@ const ProductListPage = () => {
           <SearchBar/>
           <ProductList/>
           <Loading/>
+          <Pagination/>
       </main>
     </div>
   )

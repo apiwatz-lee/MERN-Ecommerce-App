@@ -15,6 +15,9 @@ productRouter.get("/", async(req,res)=>{
         
     try {
         const query = {}
+        const PAGE_SIZE = 6;
+        const page = req.query.page
+        const skip = PAGE_SIZE * (page - 1)
         const keyword = req.query.keyword
         if(keyword){
             query.$or = [
@@ -26,8 +29,13 @@ productRouter.get("/", async(req,res)=>{
         const collection = db.collection('products')
         const products =  await collection
         .find(query)
+        .skip(skip)
+        .limit(6)
         .toArray()
-        return res.status(200).json(products)
+
+        const count = await collection.countDocuments(query)
+        const totalPages = Math.ceil(count / PAGE_SIZE)
+        return res.status(200).json({data:products,total_pages:totalPages})
     } catch (error) {
         return res.status(404).json({error:error})
     }

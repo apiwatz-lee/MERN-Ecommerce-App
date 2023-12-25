@@ -34,6 +34,8 @@ function App() {
   const [cart,setCart] = useState([])
   const [totalAmount,setTotalAmount] = useState(0)
   const [totalQuantity,setTotalQuantity] = useState(0)
+  const [page,setPage] = useState(1)
+  const [totalPage,setTotalPage] = useState(0)
 
   const {isAuthenticated} = useAuth();
   
@@ -74,6 +76,10 @@ function App() {
         setTotalAmount,
         totalQuantity,
         setTotalQuantity,
+        page,
+        setPage,
+        totalPage,
+        setTotalPage
       }}>
         <ChakraProvider>   
             <Routes>

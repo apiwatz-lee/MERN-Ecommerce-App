@@ -10,7 +10,7 @@ import { MdEdit } from "react-icons/md";
 
 const ProductList = () => {
 
-  const {keyword,setIsLoading} = useContext(AppContext)
+  const {keyword,setIsLoading,page,setTotalPage} = useContext(AppContext)
   const [products,setProducts] = useState([])
   const navigate = useNavigate();
   const {isAuthenticated} = useAuth();
@@ -21,9 +21,14 @@ const ProductList = () => {
   const fetchProducts = async() => {
 
     try {
+      const params = new URLSearchParams();
+      params.append('keyword',keyword)
+      params.append('page',page)
       setIsLoading(true)
-      const result = await axios.get(`${server}/product?keyword=${keyword}`)
-      setProducts(result.data)
+      const result = await axios.get(`${server}/product?${params.toString()}`)
+      console.log(result)
+      setProducts(result.data.data)
+      setTotalPage(result.data.total_pages)
       setIsLoading(false)
     } catch (error) {
       console.log(error);
@@ -39,7 +44,7 @@ const ProductList = () => {
 
     return () => clearTimeout(delayDebounceFn)
 
-  },[keyword])
+  },[keyword,page])
   
   const formatNumber = (num) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
@@ -60,7 +65,7 @@ const ProductList = () => {
   
 
   return (
-    <section className='pb-10 pt-5 grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 2xl:gap-x-5 2xl-y-7 2xl:w-[1500px] grid-rows-3 gap-x-3 gap-y-5 xl:gap-x-5 xl:gap-y-7 justify-items-center'>
+    <section className='pb-10 pt-5 grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 2xl:gap-x-5 2xl-y-7 2xl:w-[1500px] gap-x-3 gap-y-5 xl:gap-x-5 xl:gap-y-7 justify-items-center'>
 
         {products.map((item)=>{
             return ( 
