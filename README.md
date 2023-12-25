@@ -3,12 +3,21 @@
 Welcome to Shopping App! This web application is designed to redefine your online shopping experience, offering a curated blend of innovation, user-friendliness, and style. Dive into a world where finding your favorite products is not just a transaction but an exploration.
 
 <img src="https://res.cloudinary.com/dpsrbpkav/image/upload/v1702820870/xsurface/Screenshot_2566-12-17_at_20.46.33_itd8hj.png">
-
 ## Getting Started
 
 To use my Shopping App, visit our website at [Shopping App](https://apwxsurface.netlify.app/) and get ready for a personalized journey! making your shopping experience more tailored and delightful. Unearth new favorites while enjoying a shopping journey uniquely crafted just for you.
 
 ## Features
+
+### Authentication / User Registration
+- **Admin:** This role grants the administrator the ability to create, read, update, and delete products.
+- **User:** Users can view products and add them to the shopping cart
+- **Guest:** Visitors are able to browse and view products on this platform.
+
+<div align='center'>
+  <img src="https://res.cloudinary.com/dpsrbpkav/image/upload/v1703472930/xsurface/Screenshot_2566-12-25_at_09.46.56_kjikqz.png" width='500'>
+  <img src="https://res.cloudinary.com/dpsrbpkav/image/upload/v1703472961/xsurface/Screenshot_2566-12-25_at_09.47.10_doimkb.png" width='500'>
+</div>
 
 ### Search Products 
 - **Name/Code:** User can search for the desired product by its name or product code, and the system will introduce a slight delay to ensure that the app operates smoothly without excessive load.
