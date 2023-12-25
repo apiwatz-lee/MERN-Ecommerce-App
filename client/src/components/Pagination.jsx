@@ -1,19 +1,20 @@
-import React from 'react'
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { AppContext } from '../App'
 
 const Pagination = () => {
 
     const {page,setPage,totalPage} = useContext(AppContext)
 
-    const handlePrevious = () => {
+      const handlePrevious = () => {
         setPage((prev)=> prev !== 1 ? prev - 1 : prev)
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
       }
     
       const handleNext = () => {
         setPage((prev)=>prev !== totalPage ? prev + 1 : prev)
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
       }
-    
+
       return (
         <>
           {totalPage > 1 &&      

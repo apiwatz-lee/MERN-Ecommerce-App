@@ -26,7 +26,6 @@ const ProductList = () => {
       params.append('page',page)
       setIsLoading(true)
       const result = await axios.get(`${server}/product?${params.toString()}`)
-      console.log(result)
       setProducts(result.data.data)
       setTotalPage(result.data.total_pages)
       setIsLoading(false)
@@ -40,6 +39,7 @@ const ProductList = () => {
   useEffect(()=>{
     const delayDebounceFn = setTimeout(()=>{
       fetchProducts()
+      window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     },500)
 
     return () => clearTimeout(delayDebounceFn)
