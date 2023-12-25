@@ -24,6 +24,11 @@ To use my Shopping App, visit our website at [Shopping App](https://apwxsurface.
 
 <img src="https://res.cloudinary.com/dpsrbpkav/image/upload/v1702827888/xsurface/ProductList_oo0gfz.png">
 
+### Pagination
+- **Improved Performance:** Our system incorporates pagination to ensure a smooth and seamless user experience when accessing our website. This feature is designed to enhance user interaction and provide a positive browsing experience.
+
+<img src="https://res.cloudinary.com/dpsrbpkav/image/upload/v1703490828/xsurface/Screenshot_2566-12-25_at_14.53.10_vj2qvd.png">
+
 ### Upload Product
 - **Drag and drop:** The system has been developed to allow user to drag and drop up to 6 images from user's device into the designated zone.
 - **Preview image:** In case user are not satisfied with user's image selection, user have the option to make edits.
