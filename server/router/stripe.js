@@ -1,6 +1,5 @@
 import Stripe from 'stripe'
 import { Router } from 'express';
-import {ObjectId} from "mongodb"
 
 const stripe = Stripe(process.env.STRIPE_KEY);
 const stripeRouter = Router();
@@ -29,11 +28,11 @@ stripeRouter.post('/create-checkout-session', async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items,
       mode: 'payment',
-      success_url: `${process.env.CLIENT_URL}/checkout-success`,
-      cancel_url: `${process.env.CLIENT_URL}/product/cart`,
+      success_url: `${process.env.CLIENT_URL}/product`,
+      cancel_url: `${process.env.CLIENT_URL}/product`,
     });
   
-    res.send({url:session.url});
+    res.send({data:session,url:session.url});
   });
 
   export default stripeRouter;

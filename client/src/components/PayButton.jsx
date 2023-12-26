@@ -6,18 +6,21 @@ import { jwtDecode } from 'jwt-decode';
 
 const PayButton = () => {
 
-    const {cart} = useContext(AppContext)
+    const {cart,setIsPaymentSuccess} = useContext(AppContext)
     const server = import.meta.env.VITE_API
     const token = localStorage.getItem('token')
     const deToken = jwtDecode(token)
     const userId = deToken.userId
 
+
     const handleCheckout = async() => {
         try {
             const res = await axios.post(`${server}/stripe/create-checkout-session`,{cart,userId:userId})
+            setIsPaymentSuccess(true)
             if(res.data.url){
-                window.open(res.data.url)
+                window.location.href = res.data.url
             }
+        
         } catch (error) {
             console.log(error);
         }

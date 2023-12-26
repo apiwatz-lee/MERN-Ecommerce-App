@@ -11,7 +11,7 @@ import PageNotFoud from './pages/PageNotFoud'
 import LoginPage from './pages/LoginPage'
 import { useAuth } from './context/Authentication'
 import RegisterPage from './pages/RegisterPage'
-import CheckoutSuccess from './components/CheckoutSuccess'
+import CheckoutSuccess from './pages/CheckoutSuccess'
 
 
 export const AppContext = createContext(null)
@@ -31,6 +31,7 @@ function App() {
   const [isUpdatedCompleted,setIsUpdatedCompleted] = useState(false)
   const [isDeleteCompleted,setIsDeleteCompleted] = useState(false)
   const [isDelete,setIsDelete] = useState(false)
+  const [isPaymentSuccess,setIsPaymentSuccess] = useState(false)
   const [keyword,setKeyword] = useState('')
   const [cart,setCart] = useState([])
   const [totalAmount,setTotalAmount] = useState(0)
@@ -80,7 +81,9 @@ function App() {
         page,
         setPage,
         totalPage,
-        setTotalPage
+        setTotalPage,
+        isPaymentSuccess,
+        setIsPaymentSuccess
       }}>
         <ChakraProvider>   
             <Routes>
@@ -92,7 +95,7 @@ function App() {
                     <Route path='/product/upload/:id' element={<UploadProductPage/>}/>
                     <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
                     <Route path='/product/cart' element={<ProductCartPage/>}/>
-                    <Route path='/checkout-success' element={<CheckoutSuccess/>}/>
+                    <Route path='/payment/checkout-success' element={<CheckoutSuccess/>}/>
                     <Route path='*' element={<PageNotFoud/>}/>
                   </>
                 :

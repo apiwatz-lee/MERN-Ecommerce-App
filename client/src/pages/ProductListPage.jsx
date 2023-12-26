@@ -20,9 +20,12 @@ const ProductListPage = () => {
         setIsUpdatedCompleted,
         isUpdatedCompleted,
         isDeleteCompleted,
-        setIsDeleteCompleted} = useContext(AppContext)
+        setIsDeleteCompleted,
+        isPaymentSuccess,setIsPaymentSuccess} = useContext(AppContext)
 
   const toast = useToast()
+
+  console.log(isPaymentSuccess);
 
   useEffect(()=>{
 
@@ -58,10 +61,22 @@ const ProductListPage = () => {
         position:'top'
       })
     }
+
+    if(isPaymentSuccess){
+      toast({
+        title: 'Payment Successfully.',
+        description: `We've received your payment and we're getting your order ready to be shipped`,
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+        position:'top'
+      })
+    }
     
       setIsUploadCompleted(false)
       setIsUpdatedCompleted(false)
       setIsDeleteCompleted(false)
+      setIsPaymentSuccess(false)
       setName('')
       setCode('')
       setPrice('')
