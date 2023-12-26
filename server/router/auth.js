@@ -50,9 +50,9 @@ authRouter.post('/login',async(req,res)=>{
                 return res.status(404).json({message:'user password is not valid'})
             }
             if(user && isUserValidPassword){
-                const token = jwt.sign( {id:user._id,firstname:user.firstname,lastname:user.lastname,role:'user'},
+                const token = jwt.sign( {userId:user._id,firstname:user.firstname,lastname:user.lastname,role:'user'},
                 process.env.SECRET_KEY,
-                {expiresIn:'900000',});
+                {expiresIn:900000,});
                 return res.status(200).json({
                     message:'User login successfully',
                     token

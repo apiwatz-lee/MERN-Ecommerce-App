@@ -11,6 +11,7 @@ import PageNotFoud from './pages/PageNotFoud'
 import LoginPage from './pages/LoginPage'
 import { useAuth } from './context/Authentication'
 import RegisterPage from './pages/RegisterPage'
+import CheckoutSuccess from './components/CheckoutSuccess'
 
 
 export const AppContext = createContext(null)
@@ -91,6 +92,8 @@ function App() {
                     <Route path='/product/upload/:id' element={<UploadProductPage/>}/>
                     <Route path='/product/detail/:id' element={<ProductDetailsPage/>}/>
                     <Route path='/product/cart' element={<ProductCartPage/>}/>
+                    <Route path='/checkout-success' element={<CheckoutSuccess/>}/>
+                    <Route path='*' element={<PageNotFoud/>}/>
                   </>
                 :
                   <>

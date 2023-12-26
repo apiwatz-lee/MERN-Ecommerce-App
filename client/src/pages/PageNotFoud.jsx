@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 const PageNotFoud = () => {
   return (
-    <div className='text-5xl flex flex-col justify-center items-center h-screen gap-20'>
-        <p>You are not login</p>  
-        <Link to='/' className='underline text-orange-600 animate-bounce'>Here is our site</Link>  
+    <div className='border flex justify-center items-center h-screen flex-col'>
+        <h1 className='text-7xl text-gray-500 font-medium'>404</h1>  
+        <p className='text-xl text-gray-800 font-medium'>Page not found</p>  
     </div>
   )
 }

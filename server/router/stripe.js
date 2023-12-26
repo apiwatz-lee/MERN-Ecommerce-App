@@ -8,9 +8,14 @@ stripeRouter.post('/create-checkout-session', async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
-          // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-          price: '{{PRICE_ID}}',
-          quantity: 1,
+         price_data:{
+          currency: 'usd',
+          product_data:{
+            name:'T-shirt'
+          },
+          unit_amount: 2000,
+         },
+         quantity:1,
         },
       ],
       mode: 'payment',
@@ -18,7 +23,7 @@ stripeRouter.post('/create-checkout-session', async (req, res) => {
       cancel_url: `${process.env.CLIENT_URL}/cart`,
     });
   
-    res.send({url:session.utl});
+    res.send({url:session.url});
   });
 
   export default stripeRouter;
