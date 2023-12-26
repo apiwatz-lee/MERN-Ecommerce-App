@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext } from 'react';
 import { AppContext } from '../App';
 import { useEffect } from 'react';
+import PayButton from './PayButton';
 
 const ProductCartSummary = () => {
 
@@ -59,6 +60,7 @@ const ProductCartSummary = () => {
             <span className='font-bold text-3xl'>{totalQuantity}</span>
             <span className='font-bold text-3xl'>{formatNumber(totalAmount)}</span>
           </div>
+          <PayButton/>
         </div>
 
         <div className='lg:hidden w-[290px] flex flex-col justify-center items-center shadow-xl rounded-xl gap-5 p-5'>
@@ -76,8 +78,11 @@ const ProductCartSummary = () => {
                 <p className='font-medium'>Total Amount</p>
                 <span className='text-2xl font-semibold text-[#E04132]'>{formatNumber(totalAmount)}</span>
               </div>
+
+
             
         </div>
+
 
         </>  
     )

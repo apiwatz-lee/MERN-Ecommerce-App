@@ -6,6 +6,7 @@ import { client } from "./utils/db.js";
 import cloudinary from "cloudinary";
 import productRouter from "./router/product.js";
 import authRouter from "./router/auth.js";
+import stripeRouter from "./router/stripe.js";
 
 
 async function init(){
@@ -18,6 +19,7 @@ async function init(){
         secure: true,
       });
     const app = express();
+
     app.use(cors())
     app.use(bodyParser.json());
     const port = process.env.PORT || 4000;
@@ -30,7 +32,7 @@ async function init(){
     
     app.use('/product',productRouter)
     app.use('/auth',authRouter)
-
+    app.use('/stripe',stripeRouter)
     
     app.get("/",(req,res)=>{
         res.send('test')

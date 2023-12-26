@@ -23,10 +23,12 @@ const ProductCartPage = () => {
             <p className='text-3xl sm:text-5xl text-[#E04132] text-center'>Your cart is empty</p>
           </section>
         :
-          <section className='flex flex-col justify-center items-center lg:items-start lg:flex-row gap-5 w-[90vw] pb-10'>
+       
+          <div className='flex flex-col justify-center items-center lg:items-start lg:flex-row gap-5 w-[90vw] pb-10'>
             <ProductCartList/>
             <ProductCartSummary/>
-          </section>
+          </div>
+    
         }
         
       </main>
