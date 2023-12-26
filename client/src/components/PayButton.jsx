@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useContext } from 'react'
 import { AppContext } from '../App';
 import { jwtDecode } from 'jwt-decode';
-import {useNavigate} from 'react-router-dom'
 
 const PayButton = () => {
 
@@ -12,14 +11,12 @@ const PayButton = () => {
     const token = localStorage.getItem('token')
     const deToken = jwtDecode(token)
     const userId = deToken.userId
-    const navigate = useNavigate();
 
     const handleCheckout = async() => {
-   
         try {
             const res = await axios.post(`${server}/stripe/create-checkout-session`,{cart,userId:userId})
             if(res.data.url){
-                window.location.href = res.data.url
+                window.open(res.data.url)
             }
         } catch (error) {
             console.log(error);

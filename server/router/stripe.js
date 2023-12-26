@@ -1,26 +1,36 @@
 import Stripe from 'stripe'
 import { Router } from 'express';
+import {ObjectId} from "mongodb"
 
 const stripe = Stripe(process.env.STRIPE_KEY);
 const stripeRouter = Router();
 
 stripeRouter.post('/create-checkout-session', async (req, res) => {
-    const session = await stripe.checkout.sessions.create({
-      line_items: [
-        {
-         price_data:{
-          currency: 'usd',
+    const {cart,userId} = req.body
+
+    const line_items = cart.map(item => {
+      return {
+        price_data:{
+          currency: 'thb',
           product_data:{
-            name:'T-shirt'
+            name:item.name,
+            images:[item.avatars[0].url],
+            description:item.description,
+            metadata:{
+              id:item._id
           },
-          unit_amount: 2000,
+          },
+          unit_amount:item.price * 100,
          },
-         quantity:1,
-        },
-      ],
+         quantity:item.quantity,
+      }
+    })
+
+    const session = await stripe.checkout.sessions.create({
+      line_items,
       mode: 'payment',
       success_url: `${process.env.CLIENT_URL}/checkout-success`,
-      cancel_url: `${process.env.CLIENT_URL}/cart`,
+      cancel_url: `${process.env.CLIENT_URL}/product/cart`,
     });
   
     res.send({url:session.url});
