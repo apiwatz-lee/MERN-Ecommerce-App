@@ -30,7 +30,7 @@ const PayButton = () => {
     return (
         <div className='w-full flex justify-end'>
             <button 
-                className='bg-gray-100 text-gray-500 w-32 h-10 rounded-xl'
+                className='bg-[#E04132] hover:bg-orange-600 text-white font-bold w-32 h-10 rounded-xl duration-300'
                 type='button'
                 onClick={()=>handleCheckout()}>Checkout</button>
         </div>
