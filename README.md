@@ -6,7 +6,7 @@ Welcome to Shopping App! This web application is designed to redefine your onlin
 
 ## Getting Started
 
-To use my Shopping App, visit our website at [Shopping App](https://apwxsurface.netlify.app/) and get ready for a personalized journey! making your shopping experience more tailored and delightful. Unearth new favorites while enjoying a shopping journey uniquely crafted just for you.
+To use my Shopping App, visit our website at [Shopping App](https://apwshop.netlify.app/) and get ready for a personalized journey! making your shopping experience more tailored and delightful. Unearth new favorites while enjoying a shopping journey uniquely crafted just for you.
 
 ## Features
 
